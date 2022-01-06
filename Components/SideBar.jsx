@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const SideBar = () => (
-    <nav>
+    <nav className="bg-blue-800 text-blue-100 w-64">
         <ul>
             <li>
                 <Link href="/">
