@@ -15,7 +15,7 @@ const MyApp = ({Component, pageProps}) => {
 
             <div className="relative min-h-screen flex bg-slate-400">
 
-                <nav className="basis-1/6 text-white">
+                <nav className="basis-1/6 text-white pl-4">
                     <SideBar/>
                 </nav>
 
@@ -25,7 +25,7 @@ const MyApp = ({Component, pageProps}) => {
                         <Authentication/>
                     </aside>
 
-                    <main className="row-span-4">
+                    <main className="row-span-4 pl-12">
                         <Component {...pageProps} />
                     </main>
 
