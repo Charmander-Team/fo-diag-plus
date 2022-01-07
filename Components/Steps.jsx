@@ -32,8 +32,8 @@ const Steps = () => {
                 </div>
 
                 <div className="pt-2 pr-8 pb-2 flex flex-row-reverse gap-4">
-                    <Button label="EN SAVOIR +" classList="border-2 border-slate-400 bg-white"/>
-                    <Button label="COMMENCER" classList="border-2 border-slate-400 bg-white"/>
+                    <Button label="EN SAVOIR +" classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
+                    <Button label="COMMENCER" classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
                 </div>
 
             </div>
