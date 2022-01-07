@@ -7,7 +7,7 @@ const SideBar = () => {
     const active = "bg-white text-slate-400 rounded-l-lg";
 
  return (
-    <nav className="text-white">
+    <>
         <img src="/favicon.png" alt="logo"/>
         <ul>
             <li className={router.pathname == "/" ? active : ""}>
@@ -36,7 +36,7 @@ const SideBar = () => {
                 </Link>
             </li>
         </ul>
-    </nav>
+    </>
 );
 }
 

@@ -1,6 +1,8 @@
 import '../styles/globals.css'
 import SideBar from "../Components/SideBar";
 import Head from "next/head";
+import Footer from "../Components/Footer";
+import Authentication from "../Components/Authentication";
 
 const MyApp = ({Component, pageProps}) => {
     return (
@@ -13,22 +15,22 @@ const MyApp = ({Component, pageProps}) => {
 
             <div className="relative min-h-screen flex bg-slate-400">
 
-                <div className="basis-1/6">
+                <nav className="basis-1/6 text-white">
                     <SideBar/>
-                </div>
+                </nav>
 
                 <div className="basis-5/6 bg-white rounded-l-lg grid grid-rows-6">
 
-                    <div className="row-span-1">
-                        Connexion
-                    </div>
+                    <aside className="row-span-1">
+                        <Authentication/>
+                    </aside>
 
-                    <section className="row-span-4">
+                    <main className="row-span-4">
                         <Component {...pageProps} />
-                    </section>
+                    </main>
 
                     <footer className="row-span-1">
-                        Footer
+                        <Footer/>
                     </footer>
 
                 </div>
