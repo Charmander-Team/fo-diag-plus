@@ -13,25 +13,29 @@ const MyApp = ({Component, pageProps}) => {
                 <link rel="icon" href="./favicon.png"/>
             </Head>
 
-            <div className="relative min-h-screen flex bg-slate-400 text-slate-400">
+            <div className="flex justify-center py-8 bg-green-300">
 
-                <nav className="basis-1/6 text-white pl-4">
-                    <SideBar/>
-                </nav>
+                <div className="flex basis-11/12 bg-slate-400 text-slate-400 rounded-3xl">
 
-                <div className="basis-5/6 bg-white rounded-l-lg grid grid-rows-6">
+                    <nav className="basis-1/12 text-white pl-4">
+                        <SideBar/>
+                    </nav>
 
-                    <aside className="row-span-1">
-                        <Authentication/>
-                    </aside>
+                    <div className="basis-11/12 bg-white rounded-3xl grid grid-rows-6">
 
-                    <main className="row-span-4 pl-12 pr-12">
-                        <Component {...pageProps} />
-                    </main>
+                        <aside className="row-span-1">
+                            <Authentication/>
+                        </aside>
 
-                    <footer className="row-span-1">
-                        <Footer/>
-                    </footer>
+                        <main className="row-span-4 pl-12 pr-12">
+                            <Component {...pageProps} />
+                        </main>
+
+                        <footer className="row-span-1">
+                            <Footer/>
+                        </footer>
+
+                    </div>
 
                 </div>
 

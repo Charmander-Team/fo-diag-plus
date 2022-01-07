@@ -1,14 +1,25 @@
-import HomeOne from "../Components/HomeOne";
+import Steps from "../Components/Steps";
+import Form from "../Components/Form";
 
 const Home = () => {
     return (
         <div className="divide-y-2 divide-slate-400">
 
-            <HomeOne/>
+            <div className="pt-8 pb-8">
+                <Form/>
+            </div>
 
-            <div className="pt-8 pb-8">5 blocs</div>
+            <div className="pt-8 pb-8">
+                <Steps/>
+            </div>
 
-            <div className="pt-8 pb-8">requete API 6 trucs</div>
+            <div className="pt-8 pb-8">
+                5 blocs
+            </div>
+
+            <div className="pt-8 pb-8">
+                requete API 6 trucs
+            </div>
 
         </div>
     )
