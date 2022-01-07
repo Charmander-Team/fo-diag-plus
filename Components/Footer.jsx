@@ -21,7 +21,10 @@ const Footer = () => {
                     </a>
                 </Link>
             </div>
+
+            <div className="pl-12 pt-4">
             Footer
+            </div>
         </>
     );
 }

@@ -9,7 +9,7 @@ const SideBar = () => {
  return (
     <>
         <img src="/favicon.png" alt="logo"/>
-        <ul>
+        <ul className="grid gap-4">
             <li className={router.pathname == "/" ? active : ""}>
                 <Link href="/">
                     <a>ACCUEIL</a>

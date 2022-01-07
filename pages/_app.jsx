@@ -25,7 +25,7 @@ const MyApp = ({Component, pageProps}) => {
                         <Authentication/>
                     </aside>
 
-                    <main className="row-span-4 pl-12">
+                    <main className="row-span-4 pl-12 pr-12">
                         <Component {...pageProps} />
                     </main>
 
