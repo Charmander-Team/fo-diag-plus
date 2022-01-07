@@ -13,7 +13,7 @@ const MyApp = ({Component, pageProps}) => {
                 <link rel="icon" href="./favicon.png"/>
             </Head>
 
-            <div className="relative min-h-screen flex bg-slate-400">
+            <div className="relative min-h-screen flex bg-slate-400 text-slate-400">
 
                 <nav className="basis-1/6 text-white pl-4">
                     <SideBar/>

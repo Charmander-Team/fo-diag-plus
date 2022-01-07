@@ -1,26 +1,14 @@
-import Button from "../Components/Button";
+import HomeOne from "../Components/HomeOne";
 
 const Home = () => {
     return (
         <div className="divide-y-2 divide-slate-400">
 
-            <div>
+            <HomeOne/>
 
-                <form className="border-2 border-slate-400 rounded-lg flex">
+            <div className="pt-8 pb-8">5 blocs</div>
 
-                    <input className="basis-3/4" type="text" placeholder="INDIQUEZ UNE PATHOLOGIE"/>
-
-                    <Button label="RECHERCHER" classList="bg-slate-400 text-white"/>
-
-                </form>
-
-                <div>VOTRE DIAGNOSTIQUE EN 5 ETAPES</div>
-
-            </div>
-
-            <div>5 blocs</div>
-
-            <div>requete API 6 trucs</div>
+            <div className="pt-8 pb-8">requete API 6 trucs</div>
 
         </div>
     )
