@@ -28,32 +28,33 @@ install:
     stage: install
     script:
         - npm install
+        - ls -la
 
 # 2nd job
-test:
-    stage: test
+#test:
+#    stage: test
+#    dependencies:
+#        - install
+#    script:
+#        - npm run test-unit
+
+# 3rd job
+build:
+    stage: build
     dependencies:
         - install
     script:
-        - npm run test-unit
-
-# 3rd job
-#build:
-#    stage: build
-#    dependencies:
-#        - test
-#    script:
-#        - npm run build
-#    artifacts:
-#        name: 'run-build'
-#        expire_in: 1 week
-#        paths:
-#            - front/build
+        - npm run build
+    artifacts:
+        name: 'run-build'
+        expire_in: 1 week
+        paths:
+            - .next
 
 # 4th job
-deploy:
-    stage: deploy
-    dependencies:
-        - test
-    script:
-        - ls -la
+#deploy:
+#    stage: deploy
+#    dependencies:
+#        - build
+#    script:
+#        - ls -la
