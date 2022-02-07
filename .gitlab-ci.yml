@@ -9,13 +9,11 @@ stages:
     - deploy
 
 # Anchor YML (hide)
-# TO DO if push on main branch && if back folder are changed
+# TO DO if push on main branch
 .rules: &rules
     only:
         refs:
             - main
-#        changes:
-#            - ./**/*
 
 # cache features
 cache:
@@ -23,26 +21,29 @@ cache:
     paths:
         - node_modules/
 
-# 1st job
-install:
+# 1st job INSTALL
+fo-install:
     stage: install
+    <<: *rules
     script:
         - npm install
         - ls -la
 
-# 2nd job
-#test:
-#    stage: test
-#    dependencies:
-#        - install
-#    script:
-#        - npm run test-unit
-
-# 3rd job
-build:
-    stage: build
+# 2nd job TEST
+fo-test:
+    stage: test
+    <<: *rules
     dependencies:
         - install
+    script:
+        - echo maybe later
+
+# 3rd job BUILD
+fo-build:
+    stage: build
+    <<: *rules
+    dependencies:
+        - test
     script:
         - npm run build
     artifacts:
@@ -51,9 +52,10 @@ build:
         paths:
             - .next
 
-# 4th job
-deploy:
+# 4th job DEPLOY
+fo-deploy:
     stage: deploy
+    <<: *rules
     dependencies:
         - build
     script:
