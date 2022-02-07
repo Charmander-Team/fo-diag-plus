@@ -34,7 +34,7 @@ fo-test:
     stage: test
     <<: *rules
     dependencies:
-        - install
+        - fo-install
     script:
         - echo maybe later
 
@@ -43,7 +43,7 @@ fo-build:
     stage: build
     <<: *rules
     dependencies:
-        - test
+        - fo-test
     script:
         - npm run build
     artifacts:
@@ -57,6 +57,6 @@ fo-deploy:
     stage: deploy
     <<: *rules
     dependencies:
-        - build
+        - fo-build
     script:
         - ls -la
