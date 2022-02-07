@@ -1,0 +1,59 @@
+# Global image of node
+image: node:alpine
+
+# 4 stages
+stages:
+    - install
+    - test
+    - build
+    - deploy
+
+# Anchor YML (hide)
+# TO DO if push on main branch && if back folder are changed
+.rules: &rules
+    only:
+        refs:
+            - main
+        changes:
+            - ./**/*
+
+# cache features
+cache:
+    key: node_modules
+    paths:
+        - node_modules/
+
+# 1st job
+install:
+    stage: install
+    script:
+        - npm install
+
+# 2nd job
+test:
+    stage: test
+    dependencies:
+        - install
+    script:
+        - npm run test-unit
+
+# 3rd job
+#build:
+#    stage: build
+#    dependencies:
+#        - test
+#    script:
+#        - npm run build
+#    artifacts:
+#        name: 'run-build'
+#        expire_in: 1 week
+#        paths:
+#            - front/build
+
+# 4th job
+deploy:
+    stage: deploy
+    dependencies:
+        - test
+    script:
+        - ls -la
