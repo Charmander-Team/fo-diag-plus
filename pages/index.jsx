@@ -14,7 +14,7 @@ const Home = () => {
             </div>
 
             <div className="pt-8 pb-8">
-                5 blocs 46 eme test deploy
+                5 blocs
             </div>
 
             <div className="pt-8 pb-8">
