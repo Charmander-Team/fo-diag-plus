@@ -14,8 +14,8 @@ stages:
     only:
         refs:
             - main
-        changes:
-            - ./**/*
+#        changes:
+#            - ./**/*
 
 # cache features
 cache:
@@ -52,9 +52,9 @@ build:
             - .next
 
 # 4th job
-#deploy:
-#    stage: deploy
-#    dependencies:
-#        - build
-#    script:
-#        - ls -la
+deploy:
+    stage: deploy
+    dependencies:
+        - build
+    script:
+        - ls -la
