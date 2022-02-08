@@ -67,7 +67,7 @@ fo-deploy-prod:
     dependencies:
         - fo-build
     before_script:
-        - apk update && apk add openssh-client rsync - eval $(ssh-agent -s)
+        - apt-get update && apt-get add openssh-client rsync - eval $(ssh-agent -s)
         - echo "$ SSH_PRIVATE_KEY" | ssh-add -
     script:
         - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
