@@ -72,7 +72,7 @@ fo-deploy-prod:
         - apk update && apk add openssh-client rsync
         - echo "--- ADD SSH KEY ---"
         - eval $(ssh-agent -s)
-        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+        - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
     script:
         - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
     
