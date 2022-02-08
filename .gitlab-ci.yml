@@ -66,8 +66,9 @@ fo-deploy-prod:
     # No need to specify
     dependencies:
         - fo-build
+    image: alpine:latest
     before_script:
-        - apt-get update && apt-get add openssh-client rsync - eval $(ssh-agent -s)
+        - apk update && apk add openssh-client rsync - eval $(ssh-agent -s)
         - echo "$ SSH_PRIVATE_KEY" | ssh-add -
     script:
         - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
