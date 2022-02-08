@@ -52,31 +52,29 @@ fo-build:
         paths:
             - .next
 
-#before_script:
-#    - apt-get update -qq
-#    - apt-get install -qq git
-#    # Setup SSH deploy keys
-#    - 'which ssh-agent || ( apt-get install -qq openssh-client )'
-#    - eval $(ssh-agent -s)
-#    - ssh-add <(echo "$SSH_PRIVATE_KEY")
-#    - mkdir -p ~/.ssh
-#    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-
 # 4th job DEPLOY
-fo-deploy:
-    stage: deploy
-    <<: *rules
-    dependencies:
-        - fo-build
-    script:
-        - ls -la
-        - apt-get update -qq
-        - apt-get install -qq git
-        # Setup SSH deploy keys
-        - 'which ssh-agent || ( apt-get install -qq openssh-client )'
-        - eval $(ssh-agent -s)
-        - ssh-add <(echo "$SSH_PRIVATE_KEY")
-        - mkdir -p ~/.ssh
-        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-        - ssh root@diag-plus.tk "cd var/www/fo-diag-plus && git switch main && git pull origin main && exit"
+#fo-deploy:
+#    stage: deploy
+#    <<: *rules
+#    dependencies:
+#        - fo-build
+#    environment:
+#        name: Diag+
+#        url: https://diag-plus.tk
+#    script:
+#        - ls -la
+#        - rsync --rsync-path="mkdir -p /var/www/fo-diag-plus/ && rsync" $RSYNC_OPTIONS $SITE_PATH/build $SSH_AUTHORITY:$TARGET_PATH/$SITE_PATH
+#
+#PROD GD deploy:
+#    extends: .production_deploy
+#    before_script:
+#        - echo "--- INSTALL rsync ---"
+#        - apk update && apk add openssh-client rsync
+#        - echo "--- ADD SSH KEY ---"
+#        - eval $(ssh-agent -s)
+#        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+#        - chmod 666 /dev/tty
+#        - echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
+
 
