@@ -52,7 +52,21 @@ fo-build:
         paths:
             - .next
 
-# 4th job DEPLOY
+# 4th job STAGING DEPLOY (on Heroku)
+before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+
+fo-deploy-staging:
+    stage: deploy
+    image: ruby:latest
+    script:
+        - dpl --provide=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+    only:
+        - main
+        
+# 5th job PROD DEPLOY (on VPS Digital Ocean)
 #fo-deploy:
 #    stage: deploy
 #    <<: *rules
