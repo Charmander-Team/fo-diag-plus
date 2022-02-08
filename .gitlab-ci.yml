@@ -27,26 +27,24 @@ fo-test:
         - echo maybe later
 
 # 3rd job BUILD
-#fo-build:
-#    stage: build
-#    script:
-#        - npm run build
-#    artifacts:
-#        name: 'run-build'
-#        expire_in: 1 week
-#        paths:
-#            - .next
+fo-build:
+    # Include rules.yml
+    include: prod_rules.yml
+    stage: build
+    script:
+        - npm run build
+    artifacts:
+        name: 'run-build'
+        expire_in: 1 week
+        paths:
+            - .next
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
+    include: staging_rules.yml
     stage: deploy
     image: ruby:latest
-    #except:
-    only:
-        refs:
-            - main
-#    dependencies:
-#        - fo-build
+    dependencies: []
     # Must Use for Heroku deploy
     script:
         - apt-get update -qy
@@ -56,12 +54,13 @@ fo-deploy-staging:
         
 # 5th job PROD DEPLOY (on VPS Digital Ocean)
 fo-deploy-prod:
+    include: prod_rules.yml
     stage: deploy
     only:
         refs:
             - main
-#    dependencies:
-#        - fo-build
+    dependencies:
+        - fo-build
 #    environment:
 #        name: Diag+
 #        url: https://diag-plus.tk
