@@ -1,4 +1,0 @@
-.prod_rules:
-    only:
-        refs:
-            -mainnnn

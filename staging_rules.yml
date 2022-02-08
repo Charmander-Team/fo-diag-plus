@@ -1,9 +1,0 @@
-.staging_rules:
-    only:
-        refs:
-            - main
-
-#.staging_rules:
-#    except:
-#        refs:
-#            - main

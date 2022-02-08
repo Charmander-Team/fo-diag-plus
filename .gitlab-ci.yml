@@ -28,8 +28,9 @@ fo-test:
 
 # 3rd job BUILD
 fo-build:
-    # Include rules.yml
-    include: prod_rules.yml
+    only:
+        refs:
+            - mainn
     stage: build
     script:
         - npm run build
@@ -41,7 +42,9 @@ fo-build:
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
-    include: staging_rules.yml
+    only:
+        refs:
+            - main
     stage: deploy
     image: ruby:latest
     dependencies: []
@@ -54,11 +57,10 @@ fo-deploy-staging:
         
 # 5th job PROD DEPLOY (on VPS Digital Ocean)
 fo-deploy-prod:
-    include: prod_rules.yml
-    stage: deploy
     only:
         refs:
-            - main
+            - mainn
+    stage: deploy
     dependencies:
         - fo-build
 #    environment:
