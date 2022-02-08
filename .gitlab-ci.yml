@@ -39,8 +39,6 @@ fo-install:
 fo-test:
     stage: test
     <<: *rules
-    dependencies:
-        - fo-install
     script:
         - echo maybe later
 
@@ -48,8 +46,6 @@ fo-test:
 fo-build:
     stage: build
     <<: *rules
-    dependencies:
-        - fo-test
     script:
         - npm run build
     artifacts:
@@ -62,6 +58,8 @@ fo-build:
 fo-deploy-staging:
     stage: deploy
     <<: *rules
+    dependencies:
+        - fo-build
     image: ruby:latest
     script:
         - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
@@ -69,18 +67,19 @@ fo-deploy-staging:
         - main
         
 # 5th job PROD DEPLOY (on VPS Digital Ocean)
-#fo-deploy:
-#    stage: deploy
-#    <<: *rules
-#    dependencies:
-#        - fo-build
+fo-deploy:
+    stage: deploy
+    <<: *rules
+    dependencies:
+        - fo-build
 #    environment:
 #        name: Diag+
 #        url: https://diag-plus.tk
-#    script:
-#        - ls -la
+    script:
+        - ls -la
 #        - rsync --rsync-path="mkdir -p /var/www/fo-diag-plus/ && rsync" $RSYNC_OPTIONS $SITE_PATH/build $SSH_AUTHORITY:$TARGET_PATH/$SITE_PATH
-#
+    when: manual
+
 #PROD GD deploy:
 #    extends: .production_deploy
 #    before_script:
