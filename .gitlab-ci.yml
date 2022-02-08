@@ -68,8 +68,11 @@ fo-deploy-prod:
         - fo-build
     image: alpine:latest
     before_script:
-        - apk update && apk add openssh-client rsync - eval `ssh-agent -s`
-        - echo "$ SSH_PRIVATE_KEY" | ssh-add -
+        - echo "--- INSTALL rsync ---"
+        - apk update && apk add openssh-client rsync
+        - echo "--- ADD SSH KEY ---"
+        - eval $(ssh-agent -s)
+        - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
     script:
         - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
     
