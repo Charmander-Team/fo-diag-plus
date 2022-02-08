@@ -28,9 +28,10 @@ fo-test:
 
 # 3rd job BUILD
 fo-build:
+    # To block npm run build if push on staging because HEROKU did not need it
     only:
         refs:
-            - mainn
+            - main
     stage: build
     script:
         - npm run build
@@ -44,9 +45,10 @@ fo-build:
 fo-deploy-staging:
     only:
         refs:
-            - main
+            - mainn
     stage: deploy
     image: ruby:latest
+    # NO dependencies because Heroku make build himself
     dependencies: []
     # Must Use for Heroku deploy
     script:
@@ -59,15 +61,22 @@ fo-deploy-staging:
 fo-deploy-prod:
     only:
         refs:
-            - mainn
+            - main
     stage: deploy
+    # No need to specify
     dependencies:
         - fo-build
-#    environment:
+    before_script:
+        - apk update && apk add openssh-client rsync - eval $(ssh-agent -s)
+        - echo "$ SSH_PRIVATE_KEY" | ssh-add -
+    script:
+        - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
+    
+    #    environment:
 #        name: Diag+
 #        url: https://diag-plus.tk
-    script:
-        - ls -la
+#    script:
+#        - ls -la
 #        - rsync --rsync-path="mkdir -p /var/www/fo-diag-plus/ && rsync" $RSYNC_OPTIONS $SITE_PATH/build $SSH_AUTHORITY:$TARGET_PATH/$SITE_PATH
     when: manual
 
