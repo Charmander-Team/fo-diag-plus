@@ -21,10 +21,10 @@ fo-install:
         - npm install
 
 # 2nd job TEST
-fo-test:
-    stage: test
-    script:
-        - echo maybe later
+#fo-test:
+#    stage: test
+#    script:
+#        - echo maybe later
 
 # 3rd job BUILD
 fo-build:
@@ -68,7 +68,7 @@ fo-deploy-prod:
         - fo-build
     image: alpine:latest
     before_script:
-        - apk update && apk add openssh-client rsync - eval $(ssh-agent -s)
+        - apk update && apk add openssh-client rsync - eval `ssh-agent -s`
         - echo "$ SSH_PRIVATE_KEY" | ssh-add -
     script:
         - rsync -atv --delete --progress ./root@diag-plus.tk:/var/www/fo-diag-plus
@@ -79,7 +79,7 @@ fo-deploy-prod:
 #    script:
 #        - ls -la
 #        - rsync --rsync-path="mkdir -p /var/www/fo-diag-plus/ && rsync" $RSYNC_OPTIONS $SITE_PATH/build $SSH_AUTHORITY:$TARGET_PATH/$SITE_PATH
-    when: manual
+    #when: manual
 
 #PROD GD deploy:
 #    extends: .production_deploy
