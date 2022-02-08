@@ -73,7 +73,7 @@ fo-deploy-prod:
         - echo "--- ADD SSH KEY ---"
         - eval $(ssh-agent -s)
         - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
-        - echo "Host * ntStrictHostKeyChecking no" >> ~ / .ssh / config
+        - echo "Host * ntStrictHostKeyChecking no" >> ~/.ssh/config
     script:
         - rsync -atv --delete --progress ./ root@diag-plus.tk:/var/www/fo-diag-plus
     
