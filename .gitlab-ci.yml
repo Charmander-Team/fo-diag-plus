@@ -1,25 +1,12 @@
 # Global image of node
 image: node:latest
 
-# Must Use for Heroku deploy
-before_script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-
 # 4 stages
 stages:
     - install
     - test
     - build
     - deploy
-
-# Anchor YML (hide)
-# TO DO if push on main branch
-.rules: &rules
-    only:
-        refs:
-            - main
 
 # cache features
 cache:
@@ -30,7 +17,6 @@ cache:
 # 1st job INSTALL
 fo-install:
     stage: install
-    <<: *rules
     script:
         - npm install
         - ls -la
@@ -38,14 +24,12 @@ fo-install:
 # 2nd job TEST
 fo-test:
     stage: test
-    <<: *rules
     script:
         - echo maybe later
 
 # 3rd job BUILD
 fo-build:
     stage: build
-    <<: *rules
     script:
         - npm run build
     artifacts:
@@ -57,19 +41,27 @@ fo-build:
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
     stage: deploy
-    <<: *rules
+    #except:
+    only:
+        refs:
+            - main
     dependencies:
         - fo-build
+    # Must Use for Heroku deploy
+    before_script:
+        - apt-get update -qy
+        - apt-get install -y ruby-dev
+        - gem install dpl
     image: ruby:latest
     script:
         - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-    only:
-        - main
         
 # 5th job PROD DEPLOY (on VPS Digital Ocean)
-fo-deploy:
+fo-deploy-prod:
     stage: deploy
-    <<: *rules
+    only:
+        refs:
+            - main
     dependencies:
         - fo-build
 #    environment:
