@@ -19,7 +19,6 @@ fo-install:
     stage: install
     script:
         - npm install
-        - ls -la
 
 # 2nd job TEST
 fo-test:
@@ -28,32 +27,31 @@ fo-test:
         - echo maybe later
 
 # 3rd job BUILD
-fo-build:
-    stage: build
-    script:
-        - npm run build
-    artifacts:
-        name: 'run-build'
-        expire_in: 1 week
-        paths:
-            - .next
+#fo-build:
+#    stage: build
+#    script:
+#        - npm run build
+#    artifacts:
+#        name: 'run-build'
+#        expire_in: 1 week
+#        paths:
+#            - .next
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
     stage: deploy
+    image: ruby:latest
     #except:
     only:
         refs:
             - main
-    dependencies:
-        - fo-build
+#    dependencies:
+#        - fo-build
     # Must Use for Heroku deploy
-    before_script:
+    script:
         - apt-get update -qy
         - apt-get install -y ruby-dev
         - gem install dpl
-    image: ruby:latest
-    script:
         - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
         
 # 5th job PROD DEPLOY (on VPS Digital Ocean)
@@ -62,8 +60,8 @@ fo-deploy-prod:
     only:
         refs:
             - main
-    dependencies:
-        - fo-build
+#    dependencies:
+#        - fo-build
 #    environment:
 #        name: Diag+
 #        url: https://diag-plus.tk
