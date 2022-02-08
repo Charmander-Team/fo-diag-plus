@@ -74,6 +74,7 @@ fo-deploy-prod:
         - eval $(ssh-agent -s)
         - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
     script:
+        - ssh -o StrictHostKeyChecking=no
         - rsync -atv --delete --progress ./ root@diag-plus.tk:/var/www/fo-diag-plus
     
     #    environment:
