@@ -77,6 +77,7 @@ fo-deploy-prod:
         - chmod 700 ~/.ssh
         - ssh-keyscan diag-plus.tk >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
+        - apk add nodejs
     script:
         - rsync -atv --delete --progress ./ root@diag-plus.tk:/var/www/fo-diag-plus
         - npm start
