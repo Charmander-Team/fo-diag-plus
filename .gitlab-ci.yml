@@ -48,7 +48,7 @@ fo-deploy-staging:
             - main
     stage: deploy
     image: ruby:latest
-    # NO dependencies because Heroku make build himself
+    # NO dependencies because Heroku make build/export himself
     dependencies: []
     # Must Use for Heroku deploy
     script:
@@ -57,7 +57,7 @@ fo-deploy-staging:
         - gem install dpl
         - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
         
-# 5th job PROD DEPLOY (on VPS Digital Ocean)
+# 5th job PROD DEPLOY (on Digital Ocean VPS)
 fo-deploy-prod:
     only:
         refs:
@@ -78,6 +78,6 @@ fo-deploy-prod:
         - ssh-keyscan diag-plus.tk >> ~/.ssh/known_hosts
         - chmod 644 ~/.ssh/known_hosts
     script:
-        # Copy all folder in VPS
+        # Copy only out/ folder (all HTML static inside) in Digital Ocean VPS
         - rsync -atv --delete --progress ./out root@diag-plus.tk:/var/www/fo-diag-plus
 
