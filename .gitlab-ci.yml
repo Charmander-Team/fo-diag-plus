@@ -1,84 +1,12 @@
 # Global image of node
 image: node:latest
 
-# 4 stages
 stages:
     - install
-    - test
-    - build
-    - deploy
 
-# cache features
-cache:
-    key: node_modules
-    paths:
-        - node_modules/
-
-# 1st job INSTALL
-fo-install:
+# 1st job test apk
+test-apk:
     stage: install
     script:
-        - npm install
-
-# 2nd job TEST
-#fo-test:
-#    stage: test
-#    script:
-#        - echo maybe later
-
-# 3rd job BUILD
-fo-build:
-    # To block npm run build if push on staging because HEROKU did not need it
-    only:
-        refs:
-            - main
-    stage: build
-    script:
-        - npm run build
-    artifacts:
-        name: 'run-build'
-        expire_in: 1 week
-        paths:
-            - .next
-
-# 4th job STAGING DEPLOY (on Heroku)
-fo-deploy-staging:
-    only:
-        refs:
-            - mainn
-    stage: deploy
-    image: ruby:latest
-    # NO dependencies because Heroku make build himself
-    dependencies: []
-    # Must Use for Heroku deploy
-    script:
-        - apt-get update -qy
-        - apt-get install -y ruby-dev
-        - gem install dpl
-        - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-        
-# 5th job PROD DEPLOY (on VPS Digital Ocean)
-fo-deploy-prod:
-    only:
-        refs:
-            - main
-    stage: deploy
-    # No need to specify
-    dependencies:
-        - fo-build
-    image: alpine:latest
-    before_script:
-        - echo "--- INSTALL rsync ---"
         - apk update && apk add openssh-client rsync
-        - echo "--- ADD SSH KEY ---"
-        - eval $(ssh-agent -s)
-        - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add - > /dev/null
-        - mkdir -p ~/.ssh
-        - chmod 700 ~/.ssh
-        - ssh-keyscan diag-plus.tk >> ~/.ssh/known_hosts
-        - chmod 644 ~/.ssh/known_hosts
-        - apk add --update npm
-    script:
-        - rsync -atv --delete --progress ./ root@diag-plus.tk:/var/www/fo-diag-plus
-        - npm start
 
