@@ -39,7 +39,7 @@ fo-build:
         name: 'run-build'
         expire_in: 1 week
         paths:
-            - .next
+            - out
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
