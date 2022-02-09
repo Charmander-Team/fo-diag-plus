@@ -79,7 +79,5 @@ fo-deploy-prod:
         - chmod 644 ~/.ssh/known_hosts
     script:
         # Copy all folder in VPS
-        - rsync -atv --delete --progress ./ root@diag-plus.tk:/var/www/fo-diag-plus
-        # Run app next.js (in background)
-        - npm start &
+        - rsync -atv --delete --progress ./out root@diag-plus.tk:/var/www/fo-diag-plus
 
