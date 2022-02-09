@@ -21,10 +21,10 @@ fo-install:
         - npm install
 
 # 2nd job TEST
-#fo-test:
-#    stage: test
-#    script:
-#        - echo maybe later
+fo-test:
+    stage: test
+    script:
+        - echo maybe later
 
 # 3rd job BUILD
 fo-build:
@@ -43,9 +43,9 @@ fo-build:
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
-    only:
+    except:
         refs:
-            - mainn
+            - main
     stage: deploy
     image: ruby:latest
     # NO dependencies because Heroku make build himself
