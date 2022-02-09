@@ -14,7 +14,7 @@ const Home = () => {
             </div>
 
             <div className="pt-8 pb-8">
-                5 blocs Heroku
+                5 blocs Heroku staging 2
             </div>
 
             <div className="pt-8 pb-8">
