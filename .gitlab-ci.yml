@@ -8,5 +8,6 @@ stages:
 test-apk:
     stage: install
     script:
-        - apk update && apk add openssh-client rsync
+        - apt update
+        - apt install openssh-client rsync
 
