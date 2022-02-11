@@ -1,13 +1,15 @@
-import axios from 'axios'
+import Api from './Api.js'
 
 const UserApi = {
     async AllUser(){
         try {
-            let response = await axios.get('https://api.diag-plus.tk/api/users/')
+            // // Methode pour passer dans le header un token et autoriser l'accès a une route
+            // Api.defaults.headers.common['Authorization'] = token;
+            let response = await Api.get('/api/users/')
             .then((data)=>{
               return data;
             })
-            console.log(response)
+            console.log("User",response)
             return response.data
     
         } catch (error) {
