@@ -1,27 +1,24 @@
-import UserApi from '../src/services/UserApi'
-import { useEffect, useState } from 'react'
-
+import usersApi from "../src/services/routes/userApi";
+import {useEffect, useState} from 'react'
 
 const Authentication = () => {
 
- const [user,setUser] = useState([])
+    const [user, setUser] = useState([]);
 
- useEffect(()=>{
-    const allUser = async()=>{
-        const data = await UserApi.AllUser()
-        setUser(data)
-    }
-    allUser()
- },[])
+    useEffect(() => {
+        const getUsers = async () => {
+            const data = await usersApi.getUsers();
+            setUser(data)
+        }
+        getUsers();
+    }, [])
 
- return (
-    <>
-    Authentication<br/>
-    {
-    user.map(element=>element.email)
-    }
-    </>
-);
+    return (
+        <>
+            Authentication<br/>
+            {user.map(element => element.email)}
+        </>
+    );
 }
 
 export default Authentication;
