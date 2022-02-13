@@ -34,7 +34,7 @@ fo-build:
             - main
     stage: build
     script:
-        - npm run build
+        - npm run build/export
     artifacts:
         name: 'run-build'
         expire_in: 1 week
