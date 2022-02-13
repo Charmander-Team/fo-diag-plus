@@ -1,7 +1,10 @@
 const Connection = () => {
+
     return (
-        <h3>Connection</h3>
-    )
+        <>
+            Connexion component
+        </>
+    );
 }
 
 export default Connection;

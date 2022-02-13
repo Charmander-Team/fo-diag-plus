@@ -1,7 +1,10 @@
 const Register = () => {
+
     return (
-        <h3>Inscription</h3>
-    )
+        <>
+            Inscription Component
+        </>
+    );
 }
 
 export default Register;

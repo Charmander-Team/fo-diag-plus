@@ -3,8 +3,20 @@ import SideBar from "../Components/SideBar";
 import Head from "next/head";
 import Footer from "../Components/Footer";
 import Authentication from "../Components/Authentication";
+import Connection from "../Components/Connection";
+import Register from "../Components/Register";
 
 const MyApp = ({Component, pageProps}) => {
+
+    let content;
+    if (1 == 2) {
+        content = <Connection/>;
+    } else if (1 == 3) {
+        content = <Register/>;
+    } else {
+        content = <Component {...pageProps} />;
+    }
+
     return (
         <>
             <Head>
@@ -28,8 +40,9 @@ const MyApp = ({Component, pageProps}) => {
                         </aside>
 
                         <main className="row-span-4 pl-12 pr-12">
-                            <Component {...pageProps} />
+                            {content}
                         </main>
+
 
                         <footer className="row-span-1">
                             <Footer/>
