@@ -1,5 +1,7 @@
 import Steps from "../Components/Steps";
 import Form from "../Components/Form";
+import NewsBloc from "../Components/NewsBloc";
+import ArticlesBloc from "../Components/ArticlesBloc";
 
 const Home = () => {
     return (
@@ -14,11 +16,11 @@ const Home = () => {
             </div>
 
             <div className="pt-8 pb-8">
-                5 blocs Heroku staging 2
+                <NewsBloc/>
             </div>
 
             <div className="pt-8 pb-8">
-                requete API 6 trucs
+                <ArticlesBloc/>
             </div>
 
         </div>
