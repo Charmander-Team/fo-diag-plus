@@ -1,4 +1,4 @@
-import usersApi from "../src/services/routes/userApi";
+import usersApi from "../src/services/routes/usersApi";
 import {useEffect, useState} from 'react'
 
 const Authentication = () => {
