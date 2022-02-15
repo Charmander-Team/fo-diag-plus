@@ -4,7 +4,7 @@ import {useContext, useState} from "react";
 
 const Register = () => {
 
-    /** To close Authentication Components **/
+    /** To close Authentication Component **/
     const {resetState} = useContext(AuthenticationContext);
 
     /** To manage radio role input **/
