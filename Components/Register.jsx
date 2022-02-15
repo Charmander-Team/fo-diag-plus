@@ -13,7 +13,7 @@ const Register = () => {
         setRole(r.target.value);
     }
 
-    /** To submit form **/
+    /** To submit **/
     const action = (event) => {
         event.preventDefault();
         console.log("inscription...")
