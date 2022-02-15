@@ -1,16 +1,19 @@
 import Button from "./Button";
 import AuthenticationContext from "../Contexts/Authentication";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 
 const Register = () => {
 
+    /** To close Authentication Components **/
     const {resetState} = useContext(AuthenticationContext);
 
-    // const userRole = document.querySelector('input[name="status"]');
-    // userRole.addEventListener("click", () => {
-    //     console.log(userRole.value);
-    // })
+    /** To manage radio role input **/
+    const [role, setRole] = useState(null);
+    const handleClick = (r) => {
+        setRole(r.target.value);
+    }
 
+    /** To submit form **/
     const action = (event) => {
         event.preventDefault();
         console.log("inscription...")
@@ -44,9 +47,12 @@ const Register = () => {
                        placeholder="75000" required/>
 
                 <div>
-                    <input type="radio" name="status" value="Patient"/> Patient
-                    <input type="radio" name="status" value="Doctor"/> Médecin
+                    <input type="radio" name="status" onClick={handleClick} value="Patient"/> Patient
+                    <input type="radio" name="status" onClick={handleClick} value="Doctor"/> Médecin
                 </div>
+
+                { role === "Patient" ? "PATIENT" : ""}
+                { role === "Doctor" ? "MEDECIN" : ""}
 
                 <Button label="S'inscrire"
                         classList="border-2"
