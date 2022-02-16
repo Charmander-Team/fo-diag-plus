@@ -22,7 +22,7 @@ const Register = () => {
     return (
         <>
 
-            <Button label="X Fermer"
+            <Button label="X - Fermer"
                     classList="border-2 border-slate-400 bg-red-100 hover:bg-slate-400 hover:text-white"
                     onClick={resetState}/>
 
