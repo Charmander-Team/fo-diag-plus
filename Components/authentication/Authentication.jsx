@@ -1,7 +1,7 @@
-import usersApi from "../src/services/routes/usersApi";
+import usersApi from "./../../src/services/routes/usersApi";
 import {useContext, useEffect, useState} from 'react'
-import Button from "./Button";
-import AuthenticationContext from "../Contexts/Authentication";
+import Button from "./../Button";
+import AuthenticationContext from "../../Contexts/Authentication";
 
 const Authentication = () => {
 
