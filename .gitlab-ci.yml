@@ -43,9 +43,9 @@ fo-build:
 
 # 4th job STAGING DEPLOY (on Heroku)
 fo-deploy-staging:
-    except:
+    only:
         refs:
-            - main
+            - staging
     stage: deploy
     image: ruby:latest
     # NO dependencies because Heroku make build/export himself
