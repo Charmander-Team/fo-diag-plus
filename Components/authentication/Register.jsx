@@ -1,6 +1,8 @@
 import Button from "./../Button";
 import AuthenticationContext from "./../../Contexts/Authentication";
 import {useContext, useState} from "react";
+import RegisterPatient from "./RegisterPatient";
+import RegisterDoctor from "./RegisterDoctor";
 
 const Register = () => {
 
@@ -51,8 +53,8 @@ const Register = () => {
                     <input type="radio" name="status" onClick={handleClick} value="Doctor"/> Médecin
                 </div>
 
-                { role === "Patient" ? "PATIENT" : ""}
-                { role === "Doctor" ? "MEDECIN" : ""}
+                { role === "Patient" ? <RegisterPatient/> : ""}
+                { role === "Doctor" ? <RegisterDoctor/> : ""}
 
                 <Button label="S'inscrire"
                         classList="border-2"
