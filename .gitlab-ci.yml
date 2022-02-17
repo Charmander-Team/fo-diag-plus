@@ -16,12 +16,20 @@ cache:
 
 # 1st job INSTALL
 fo-install:
+    only:
+        refs:
+            - main
+            - staging
     stage: install
     script:
         - npm install
 
 # 2nd job TEST
 fo-test:
+    only:
+        refs:
+            - main
+            - staging
     stage: test
     script:
         - echo maybe later
@@ -80,4 +88,5 @@ fo-deploy-prod:
     script:
         # Copy only out/ folder (all HTML static inside) in Digital Ocean VPS
         - rsync -atv --delete --progress ./out root@diag-plus.tk:/var/www/fo-diag-plus
+    when: manual
 
