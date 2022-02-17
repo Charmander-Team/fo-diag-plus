@@ -1,5 +1,5 @@
-import Button from "./Button";
-import AuthenticationContext from "../Contexts/Authentication";
+import Button from "./../Button";
+import AuthenticationContext from "../../Contexts/Authentication";
 import {useContext} from "react";
 
 const Connection = () => {
