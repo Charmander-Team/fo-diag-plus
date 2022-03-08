@@ -1,5 +1,5 @@
-import Connection from "./Connection";
-import Register from "./Register";
+import Connection from "./authentication/Connection";
+import Register from "./authentication/Register";
 import {useContext} from "react";
 import AuthenticationContext from "../Contexts/Authentication";
 

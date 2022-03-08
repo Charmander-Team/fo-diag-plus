@@ -1,10 +1,10 @@
-import '../styles/globals.css'
-import SideBar from "../Components/SideBar";
+import './../styles/globals.css'
+import SideBar from "./../Components/SideBar";
 import Head from "next/head";
-import Footer from "../Components/Footer";
-import Authentication from "../Components/Authentication";
+import Footer from "./../Components/Footer";
+import Authentication from "./../Components/authentication/Authentication";
 import {AuthenticationWrapper} from "../Contexts/Authentication";
-import Content from "../Components/Content";
+import Content from "./../Components/Content";
 
 const MyApp = ({Component, pageProps}) => {
 
