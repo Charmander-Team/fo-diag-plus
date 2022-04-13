@@ -1,4 +1,5 @@
 import './../styles/globals.css'
+import "./../styles/Authentication.scss";
 import SideBar from "./../Components/SideBar";
 import Head from "next/head";
 import Footer from "./../Components/Footer";
@@ -17,24 +18,24 @@ const MyApp = ({Component, pageProps}) => {
                 <link rel="icon" href="./favicon.png"/>
             </Head>
             <AuthenticationWrapper>
-                <div className="flex justify-center py-8 bg-green-300 min-h-screen">
-                    <div className="flex basis-10/12 bg-slate-400 text-slate-400 rounded-3xl">
+                <div className="flex justify-center py-8 bg-[#E3E7EC] min-h-screen">
+                    <div className="flex basis-10/12 bg-slate-400 text-slate-400 rounded-3xl drop-shadow-2xl">
 
                         <nav className="basis-2/12 text-white pl-4">
                             <SideBar/>
                         </nav>
 
-                        <div className="basis-10/12 bg-white rounded-3xl grid grid-rows-6">
+                        <div className="basis-10/12 bg-white rounded-3xl grid ">
 
-                            <aside className="row-span-1">
+                            <aside className="flex justify-end py-10 px-12">
                                 <Authentication/>
                             </aside>
 
-                            <main className="row-span-4 pl-12 pr-12">
+                            <main className=" pl-12 pr-12">
                                 <Content Component={Component} pageProps={pageProps}/>
                             </main>
 
-                            <footer className="row-span-1">
+                            <footer>
                                 <Footer/>
                             </footer>
                         </div>

@@ -1,6 +1,5 @@
 import usersApi from "./../../src/services/routes/usersApi";
 import {useContext, useEffect, useState} from 'react'
-import Button from "./../Button";
 import AuthenticationContext from "../../Contexts/Authentication";
 
 const Authentication = () => {
@@ -14,19 +13,16 @@ const Authentication = () => {
         getUsers();
     }, [])
 
-    const { connectionClick, registerClick } = useContext(AuthenticationContext);
+    let { connectionClick, registerClick } = useContext(AuthenticationContext);
 
     return (
         <>
-            <div className="">
-                <Button label="Connexion"
-                        classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
-                        onClick={ connectionClick }/>
-                <Button label="Inscription"
-                        classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
-                        onClick={ registerClick }/>
+            <div className="auth flex w-fit h-fit">
+                <input id="toggle-on" className="toggle toggle-left" name="toggle" value="connexion" type="radio" checked/>
+                <label htmlFor="toggle-on" className="btnAuth" onClick={ connectionClick }>Connexion</label>
+                <input id="toggle-off" className="toggle toggle-right" name="toggle" value="inscription" type="radio"/>
+                <label htmlFor="toggle-off" className="btnAuth" onClick={ registerClick }>Inscription</label>
             </div>
-            {user.map(element => element.email)}
         </>
     );
 }

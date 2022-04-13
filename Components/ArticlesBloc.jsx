@@ -18,7 +18,7 @@ const ArticlesBloc = () => {
         <section className="grid grid-cols-3">
 
             {articles.map((article, index) => (
-                <Articles image={article.image} title={article.title} description={article.description}/>
+                <Articles image={article.image} title={article.title} description={article.description} key={index}/>
             ))}
 
         </section>

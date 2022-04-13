@@ -5,6 +5,8 @@ const AuthenticationContext = createContext();
 const AuthenticationWrapper = ({ children }) => {
     const [connection, setConnection] = useState(false);
     const [register, setRegister] = useState(false);
+    
+    const [idFor, setIdFor] = useState("");
 
     const connectionClick = () => {
         setConnection(true);
@@ -21,8 +23,20 @@ const AuthenticationWrapper = ({ children }) => {
         setRegister(false);
     }
 
+    const handleChange = (event) => {
+        console.log(event)
+        
+        if(event.target.value==="connexion"){
+            connectionClick()
+        }
+        
+        if(event.target.value==="inscription"){
+            registerClick()
+        }
+    }
+
     return (
-        <AuthenticationContext.Provider value={{ connectionClick, connection, registerClick, register, resetState }}>
+        <AuthenticationContext.Provider value={{ connectionClick, connection, registerClick, register, resetState, handleChange}}>
             {children}
         </AuthenticationContext.Provider>
     );

@@ -21,7 +21,7 @@ const usersApi = {
         }
         return [];
 
-    }
+    },
 }
 
 export default usersApi;
