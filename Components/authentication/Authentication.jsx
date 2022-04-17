@@ -13,14 +13,16 @@ const Authentication = () => {
         getUsers();
     }, [])
 
+    const [checked,setChecked] = useState(true)
+
     let { connectionClick, registerClick } = useContext(AuthenticationContext);
 
     return (
         <>
             <div className="auth flex w-fit h-fit">
-                <input id="toggle-on" className="toggle toggle-left" name="toggle" value="connexion" type="radio" checked/>
+                <input id="toggle-on" className="toggle toggle-left" name="toggle" value="connexion" type="radio" defaultChecked={checked} onChange={() => setChecked(!checked)}/>
                 <label htmlFor="toggle-on" className="btnAuth" onClick={ connectionClick }>Connexion</label>
-                <input id="toggle-off" className="toggle toggle-right" name="toggle" value="inscription" type="radio"/>
+                <input id="toggle-off" className="toggle toggle-right" name="toggle" value="inscription" type="radio" onChange={() => setChecked(!checked)}/>
                 <label htmlFor="toggle-off" className="btnAuth" onClick={ registerClick }>Inscription</label>
             </div>
         </>

@@ -1,5 +1,6 @@
 import './../styles/globals.css'
 import "./../styles/Authentication.scss";
+import "./../styles/Register.scss";
 import SideBar from "./../Components/SideBar";
 import Head from "next/head";
 import Footer from "./../Components/Footer";

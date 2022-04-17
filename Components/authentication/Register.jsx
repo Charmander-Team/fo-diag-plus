@@ -15,53 +15,36 @@ const Register = () => {
         setRole(r.target.value);
     }
 
-    /** To submit **/
-    const action = (event) => {
-        event.preventDefault();
-        console.log("inscription...")
-    }
-
     return (
         <>
 
             <Button label="X - Fermer"
-                    classList="border-2 border-slate-400 bg-red-100 hover:bg-slate-400 hover:text-white"
-                    onClick={resetState}/>
+            classList="border-2 border-slate-400 bg-red-100 hover:bg-slate-400 hover:text-white mb-6"                    
+            onClick={resetState}/>
 
             <form>
 
-                <input className="border-2 border-slate-400 rounded-lg" name="lastname" type="text"
-                       placeholder="DOE" required/>
-
-                <input className="border-2 border-slate-400 rounded-lg" name="firstname" type="text"
-                       placeholder="John" required/>
-
-                <input className="border-2 border-slate-400 rounded-lg" name="phone" type="tel"
-                       placeholder="0123456789" required/>
-
-                <input className="border-2 border-slate-400 rounded-lg" name="address" type="text"
-                       placeholder="1, rue du diagnostique" required/>
-
-                <input className="border-2 border-slate-400 rounded-lg" name="city" type="text"
-                       placeholder="Paris" required/>
-
-                <input className="border-2 border-slate-400 rounded-lg" name="zip" type="number"
-                       placeholder="75000" required/>
-
+            <section className="register mb-4">
                 <div>
-                    <input type="radio" name="status" onClick={handleClick} value="Patient"/> Patient
-                    <input type="radio" name="status" onClick={handleClick} value="Doctor"/> Médecin
+                    <input type="radio" id="control_01" name="status" onClick={handleClick} value="Patient"/>
+                    <label htmlFor="control_01">
+                        <h2 className="mt-3">Patient</h2>
+                        <p>Je suis un patient est je souhaite obtenir un diagnostique fiable en ligne</p>
+                    </label>
                 </div>
+                <div>
+                    <input type="radio" id="control_02" name="status" onClick={handleClick} value="Doctor"/>
+                    <label htmlFor="control_02">
+                        <h2 className="mt-3">Docteur</h2>
+                        <p>Je suis un praticien et je souhaite effectuer des diagnostiques ligne puis consulter mes patients</p>
+                    </label>
+                </div>
+            </section>
 
                 { role === "Patient" ? <RegisterPatient/> : ""}
                 { role === "Doctor" ? <RegisterDoctor/> : ""}
 
-                <Button label="S'inscrire"
-                        classList="border-2"
-                        onClick={action}/>
-
             </form>
-
         </>
     );
 }
