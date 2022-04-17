@@ -36,7 +36,7 @@ const Register = () => {
                     <input type="radio" id="control_02" name="status" onClick={handleClick} value="Doctor"/>
                     <label htmlFor="control_02">
                         <h2 className="mt-3">Docteur</h2>
-                        <p>Je suis un praticien et je souhaite effectuer des diagnostiques ligne puis consulter mes patients</p>
+                        <p>Je suis un praticien et je souhaite effectuer des diagnostiques en ligne puis consulter mes patients</p>
                     </label>
                 </div>
             </section>
