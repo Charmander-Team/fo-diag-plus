@@ -1,17 +1,18 @@
-import usersApi from "./../../src/services/routes/usersApi";
-import {useContext, useEffect, useState} from 'react'
+// import usersApi from "./../../src/services/routes/usersApi";
+// import {useContext, useEffect, useState} from 'react'
+import {useContext, useState} from 'react'
 import AuthenticationContext from "../../Contexts/Authentication";
 
 const Authentication = () => {
 
-    const [user, setUser] = useState([]);
-    useEffect(() => {
-        const getUsers = async () => {
-            const data = await usersApi.getUsers();
-            setUser(data)
-        }
-        getUsers();
-    }, [])
+    // const [user, setUser] = useState([]);
+    // useEffect(() => {
+    //     const getUsers = async () => {
+    //         const data = await usersApi.getUsers();
+    //         setUser(data)
+    //     }
+    //     getUsers();
+    // }, [])
 
     const [checked,setChecked] = useState(true)
 
