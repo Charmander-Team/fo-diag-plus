@@ -2,6 +2,7 @@ import './../styles/globals.css'
 import "./../styles/Authentication.scss";
 import "./../styles/Register.scss";
 import SideBar from "./../Components/SideBar";
+import Navigation from "./../Components/Navigation";
 import Head from "next/head";
 import Footer from "./../Components/Footer";
 import Authentication from "./../Components/authentication/Authentication";
@@ -27,8 +28,9 @@ const MyApp = ({Component, pageProps}) => {
                         </nav>
 
                         <div className="basis-10/12 bg-white rounded-3xl grid ">
-
-                            <aside className="flex justify-end py-10 px-12">
+                                
+                            <aside className="flex justify-self-stretch items-center pt-5 pb-10 px-12">
+                                <Navigation/>
                                 <Authentication/>
                             </aside>
 

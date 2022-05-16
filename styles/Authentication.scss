@@ -62,3 +62,9 @@ input[type="radio"].toggle {
     }
   }
 }
+
+.btnAuth.hover:hover {
+  background-color:rgb(148, 163, 184);
+  color:#ffffff;
+  cursor:pointer;
+}

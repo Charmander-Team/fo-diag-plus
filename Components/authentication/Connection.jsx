@@ -4,8 +4,8 @@ import {useContext} from "react";
 
 const Connection = () => {
 
-    const {resetState} = useContext(AuthenticationContext);
-    const {connectedUser} = useContext(AuthenticationContext);
+    const {resetState,connectedUser} = useContext(AuthenticationContext);
+    // const {connectedUser} = useContext(AuthenticationContext);
 
     let opts =  {
         email:"",
