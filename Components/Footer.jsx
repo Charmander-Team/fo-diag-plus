@@ -22,7 +22,7 @@ const Footer = () => {
                 </Link>
             </div>
 
-            <div className="pl-12 pt-4">
+            <div className="py-8 px-12">
             Footer
             </div>
         </>
