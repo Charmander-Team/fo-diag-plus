@@ -17,10 +17,7 @@ const AuthenticationWrapper = ({ children }) => {
     const [login,setLogin] = useState(false)
     const connectedUser = async (event,opts) => {
         event.preventDefault()
-        //console.log("e",event)
-        //console.log("opts",opts)
         const token = await authentication.byPostToken(opts)
-        //console.log("token",token)
         if ( token ){
             setLogin(true)
             localStorage.setItem('tokenRefresh', token.refresh)
@@ -31,6 +28,23 @@ const AuthenticationWrapper = ({ children }) => {
         }
     }
     // Process connexion fin
+
+    // Register Feature
+    const registerUser = async (event, input) => {
+        event.preventDefault()
+        console.log("opts", input)
+        //const token = await authentication.byPostToken(input)
+        //console.log("token",token)
+        // if ( token ){
+        //     setLogin(true)
+        //     localStorage.setItem('tokenRefresh', token.refresh)
+        //     localStorage.setItem('tokenAccess', token.access)
+        //
+        //     setConnection(false);
+        //     setRegister(false);
+        // }
+    }
+
 
     //Process refresh
 
@@ -88,6 +102,7 @@ const AuthenticationWrapper = ({ children }) => {
           connection,
           registerClick,
           register,
+          registerUser,
           resetState,
           handleChange,
           connectedUser,
