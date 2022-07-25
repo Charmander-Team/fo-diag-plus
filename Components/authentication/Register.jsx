@@ -104,8 +104,8 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Sexe
               </label>
-              <div>
-                <span className="px-3">M :</span><input name="gender" value="M" type="radio"/>
+              <div onChange={handleInputChange}>
+                <span className="px-3">M :</span><input id="male" name="gender" value="M" type="radio"/>
                 <span className="px-3">F :</span><input name="gender" value="F" type="radio"/>
               </div>
             </div>

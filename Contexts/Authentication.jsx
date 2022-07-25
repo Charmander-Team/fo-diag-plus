@@ -150,6 +150,17 @@ const AuthenticationWrapper = ({children}) => {
     if (event.target.id === "origin") {
       input.weight = event.target.value
     }
+    if (event.target.id === "alcohol") {
+      input.alcohol = event.target.value
+    }
+    if (event.target.id === "tobacco") {
+      input.tobacco = event.target.value
+    }
+    if (event.target.id === "male") {
+      input.gender = event.target.value
+    } else {
+      input.gender = "F"
+    }
   }
 
   return (

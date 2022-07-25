@@ -57,9 +57,9 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Tabac
             </label>
-            <div>
+            <div onChange={handleInputChange}>
               <span className="text-gray-700 px-3">Oui :</span>
-              <input name="tobacco" value="true" type="radio"/>
+              <input id="tobacco" name="tobacco" value="true" type="radio"/>
               <span className="text-gray-700 px-3">Non :</span>
               <input name="tobacco" value="false" type="radio"/>
             </div>
@@ -69,9 +69,9 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Alcool
             </label>
-            <div>
+            <div onChange={handleInputChange}>
               <span className="text-gray-700 px-3">Oui :</span>
-              <input name="alcohol" value="true" type="radio"/>
+              <input id="alcohol" name="alcohol" value="true" type="radio"/>
               <span className="text-gray-700 px-3">Non :</span>
               <input name="alcohol" value="false" type="radio"/>
             </div>
