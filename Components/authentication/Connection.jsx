@@ -4,12 +4,7 @@ import {useContext} from "react";
 
 const Connection = () => {
 
-  const {resetState} = useContext(AuthenticationContext);
-
-  const test = (event) => {
-      event.preventDefault();
-      console.log("test");
-  }
+  const {resetState, connectedUser} = useContext(AuthenticationContext);
 
   let opts = {
     email: "",
@@ -17,11 +12,11 @@ const Connection = () => {
   }
 
   const handleChange = (e) => {
-    if (e.target.id == "username") {
+    if ( e.target.id === "mail" ) {
       opts.email = e.target.value
     }
 
-    if (e.target.id == "password") {
+    if ( e.target.id === "password" ) {
       opts.password = e.target.value
     }
   }
@@ -36,7 +31,7 @@ const Connection = () => {
         <form className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="mail">
-              Email
+              Adresse mail
             </label>
             <input onChange={handleChange}
                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -50,9 +45,9 @@ const Connection = () => {
                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                    id="password" type="password"/>
           </div>
-          
+
           <div className="flex items-center justify-between">
-            <Button onClick={test}
+            <Button onClick={ (event)=> { connectedUser(event,opts) } }
                     className="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
                     label="Se connecter"/>
           </div>

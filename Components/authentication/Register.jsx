@@ -7,17 +7,12 @@ import RegisterDoctor from "./RegisterDoctor";
 const Register = () => {
 
   /** To close Authentication Component **/
-  const {resetState} = useContext(AuthenticationContext);
+  const {resetState, registerUser, handleInputChange, fieldTable} = useContext(AuthenticationContext);
 
   /** To manage radio role input **/
   const [role, setRole] = useState(null);
   const handleClick = (r) => {
     setRole(r.target.value);
-  }
-
-  const addUser = (event) => {
-    event.preventDefault();
-    console.log("inscription...")
   }
 
   return (
@@ -35,16 +30,16 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastname">
                 Nom
               </label>
-              <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="lastname" type="text" placeholder="COUALAN"/>
+              <input onChange={handleInputChange}
+                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     id="lastname" type="text" placeholder="COUALAN"/>
             </div>
 
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstname">
                 Prénom
               </label>
-              <input
+              <input onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="firstname" type="text" placeholder="Yoann"/>
             </div>
@@ -53,7 +48,7 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="mail">
                 Adresse mail
               </label>
-              <input
+              <input onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="mail" type="email" placeholder="coualan.yoann@gmail.com"/>
             </div>
@@ -62,7 +57,7 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
                 Password
               </label>
-              <input
+              <input onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 id="password" type="password"/>
             </div>
@@ -71,7 +66,7 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
                 Téléphone
               </label>
-              <input
+              <input onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="phone" type="phone" placeholder="0601020304"/>
             </div>
@@ -80,7 +75,7 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
                 Adresse postale
               </label>
-              <input
+              <input onChange={handleInputChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 id="address" type="text" placeholder="25 Rue Claude Tillier"/>
             </div>
@@ -90,7 +85,7 @@ const Register = () => {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
                   Ville
                 </label>
-                <input
+                <input onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="city" type="text" placeholder="Paris"/>
               </div>
@@ -99,7 +94,7 @@ const Register = () => {
                 <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip">
                   Code postal
                 </label>
-                <input
+                <input onChange={handleInputChange}
                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   id="zip" type="number" placeholder="75012"/>
               </div>
@@ -109,8 +104,8 @@ const Register = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Sexe
               </label>
-              <div>
-                <span className="px-3">M :</span><input name="gender" value="M" type="radio"/>
+              <div onChange={handleInputChange}>
+                <span className="px-3">M :</span><input id="male" name="gender" value="M" type="radio"/>
                 <span className="px-3">F :</span><input name="gender" value="F" type="radio"/>
               </div>
             </div>
@@ -141,7 +136,7 @@ const Register = () => {
 
         <div className="flex items-center justify-between">
           <Button label="S'inscrire"
-                  onClick={addUser}
+                  onClick={ (event)=> { registerUser(event, fieldTable) } }
                   classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
         </div>
 

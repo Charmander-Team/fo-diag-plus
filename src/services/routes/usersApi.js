@@ -22,6 +22,23 @@ const usersApi = {
         return [];
 
     },
+
+    // async createUser() {
+    //
+    //     let response = await customAxios.post(`${route}`)
+    //         .then((data) => {
+    //             return data;
+    //         })
+    //         .catch(error => {
+    //             console.error(`Route ${route} does not exist !`, error);
+    //         });
+    //
+    //     if (response) {
+    //         return response.data;
+    //     }
+    //     return [];
+    //
+    // },
 }
 
 export default usersApi;
