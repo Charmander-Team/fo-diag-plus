@@ -147,9 +147,6 @@ const AuthenticationWrapper = ({children}) => {
     if (event.target.id === "birthdate") {
       input.weight = event.target.value
     }
-    if (event.target.id === "origin") {
-      input.weight = event.target.value
-    }
     if (event.target.id === "alcohol") {
       input.alcohol = event.target.value
     }
@@ -160,6 +157,9 @@ const AuthenticationWrapper = ({children}) => {
       input.gender = event.target.value
     } else {
       input.gender = "F"
+    }
+    if (event.target.id === "origin") {
+      input.origin = event.target.value
     }
   }
 
