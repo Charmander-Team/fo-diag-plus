@@ -94,7 +94,7 @@ const AuthenticationWrapper = ({children}) => {
     }
   }
 
-  let input = {
+  let fieldTable = {
     lastname: "",
     firstname: "",
     mail: "",
@@ -102,7 +102,7 @@ const AuthenticationWrapper = ({children}) => {
     phone: "",
     address: "",
     city: "",
-    zip: "",
+    zipcode: "",
     weight: "",
     gender: "",
     origin: "",
@@ -115,57 +115,57 @@ const AuthenticationWrapper = ({children}) => {
   const handleInputChange = (event) => {
     event.preventDefault();
     if (event.target.id === "lastname") {
-      input.lastname = event.target.value
+      fieldTable.lastname = event.target.value
     }
     if (event.target.id === "firstname") {
-      input.firstname = event.target.value
+      fieldTable.firstname = event.target.value
     }
     if (event.target.id === "mail") {
-      input.mail = event.target.value
+      fieldTable.mail = event.target.value
     }
     if (event.target.id === "password") {
-      input.password = event.target.value
+      fieldTable.password = event.target.value
     }
     if (event.target.id === "phone") {
-      input.phone = event.target.value
+      fieldTable.phone = event.target.value
     }
     if (event.target.id === "address") {
-      input.address = event.target.value
+      fieldTable.address = event.target.value
     }
     if (event.target.id === "city") {
-      input.city = event.target.value
+      fieldTable.city = event.target.value
     }
     if (event.target.id === "zip") {
-      input.zip = event.target.value
+      fieldTable.zip = event.target.value
     }
     if (event.target.id === "weight") {
-      input.weight = event.target.value
+      fieldTable.weight = event.target.value
     }
     if (event.target.id === "height") {
-      input.weight = event.target.value
+      fieldTable.weight = event.target.value
     }
     if (event.target.id === "birthdate") {
-      input.weight = event.target.value
+      fieldTable.weight = event.target.value
     }
     if (event.target.id === "alcohol") {
-      input.alcohol = event.target.value
+      fieldTable.alcohol = event.target.value
     }
     if (event.target.id === "tobacco") {
-      input.tobacco = event.target.value
+      fieldTable.tobacco = event.target.value
     }
     if (event.target.id === "male") {
-      input.gender = event.target.value
+      fieldTable.gender = event.target.value
     } else {
-      input.gender = "F"
+      fieldTable.gender = "F"
     }
     if (event.target.id === "origin") {
-      input.origin = event.target.value
+      fieldTable.origin = event.target.value
     }
   }
 
   return (
     <AuthenticationContext.Provider value={{
-      input,
+      fieldTable,
       connectionClick,
       connection,
       registerClick,

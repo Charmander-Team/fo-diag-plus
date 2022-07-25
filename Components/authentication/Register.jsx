@@ -7,7 +7,7 @@ import RegisterDoctor from "./RegisterDoctor";
 const Register = () => {
 
   /** To close Authentication Component **/
-  const {resetState, registerUser, handleInputChange, input} = useContext(AuthenticationContext);
+  const {resetState, registerUser, handleInputChange, fieldTable} = useContext(AuthenticationContext);
 
   /** To manage radio role input **/
   const [role, setRole] = useState(null);
@@ -136,7 +136,7 @@ const Register = () => {
 
         <div className="flex items-center justify-between">
           <Button label="S'inscrire"
-                  onClick={ (event)=> { registerUser(event, input) } }
+                  onClick={ (event)=> { registerUser(event, fieldTable) } }
                   classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
         </div>
 
