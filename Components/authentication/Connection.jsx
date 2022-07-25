@@ -6,22 +6,17 @@ const Connection = () => {
 
   const {resetState, connectedUser} = useContext(AuthenticationContext);
 
-  const test = (event) => {
-      event.preventDefault();
-      connectedUser(event,opts)
-  }
-
   let opts = {
     email: "",
     password: ""
   }
 
   const handleChange = (e) => {
-    if (e.target.id == "username") {
+    if ( e.target.id === "mail" ) {
       opts.email = e.target.value
     }
 
-    if (e.target.id == "password") {
+    if ( e.target.id === "password" ) {
       opts.password = e.target.value
     }
   }
@@ -52,7 +47,7 @@ const Connection = () => {
           </div>
 
           <div className="flex items-center justify-between">
-            <Button onClick={test}
+            <Button onClick={ (event)=> { connectedUser(event,opts) } }
                     className="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
                     label="Se connecter"/>
           </div>
