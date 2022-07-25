@@ -5,11 +5,11 @@ const Form = () => {
     return (
             <form className="flex">
 
-                <div className="flex basis-3/4 border-2 border-slate-400 rounded-lg">
+                <div className="inline-flex basis-3/4 border-2 border-slate-400 rounded-lg">
 
-                    <input className="w-full" type="text" placeholder="INDIQUEZ UNE PATHOLOGIE"/>
+                        <input className="w-full p-2  rounded-lg" type="text" placeholder="INDIQUEZ UNE PATHOLOGIE"/>
 
-                    <Button label="RECHERCHER" classList="float-right bg-slate-400 text-white"/>
+                        <Button label="RECHERCHER" classList="bg-slate-400 border-2 border-slate-400 rounded-lg float-right text-white"/>
 
                 </div>
 
