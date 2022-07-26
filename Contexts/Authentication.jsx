@@ -20,8 +20,8 @@ const AuthenticationWrapper = ({children}) => {
   // Connect Feature
   const connectUser = async (event, credentials) => {
     event.preventDefault()
-    const token = await authentication.byPostToken(credentials)
-    if (token) {
+    const token = await authentication.generateToken(credentials);
+    if (token && token.length !== 0 ) {
       setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
@@ -37,7 +37,8 @@ const AuthenticationWrapper = ({children}) => {
   // Register User Feature
   const registerUser = async (event, userInfos) => {
     event.preventDefault();
-    await usersApi.createUser(userInfos)
+    const creation = await usersApi.createUser(userInfos)
+    //console.log(creation)
   }
 
   // Refresh Feature

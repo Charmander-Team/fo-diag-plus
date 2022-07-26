@@ -5,9 +5,9 @@ const routeTokenRefresh = "/api/token/refresh/";
 
 const authentication = {
 
-  async byPostToken(dataUser) {
+  async generateToken(credentials) {
 
-    let response = await customAxios.post(`${route}`, dataUser)
+    let response = await customAxios.post(`${route}`, credentials)
       .then((data) => {
         return data;
       })
