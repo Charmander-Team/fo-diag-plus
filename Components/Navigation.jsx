@@ -1,5 +1,8 @@
 import AuthenticationContext from "../Contexts/Authentication";
 import {useContext} from 'react'
+import styles from "../styles/SideBar.module.scss";
+import Link from "next/link";
+import {useRouter} from "next/router";
 
 const Navigation = () => {
 
@@ -18,22 +21,37 @@ const Navigation = () => {
             </div>
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
               <div className="text-sm lg:flex-grow">
-                <a href="#responsive-header"
-                   className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8] mr-4">
-                  Mes Rendez-vous
-                </a>
-                <a href="#responsive-header"
-                   className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8] mr-4">
-                  Mes Consultations
-                </a>
-                <a href="#responsive-header"
-                   className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8] mr-4">
-                  Mon Dossier
-                </a>
-                <a href="#responsive-header"
-                   className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
-                  Chat
-                </a>
+
+                <Link href="/my-appointments">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Mes Rendez-vous
+                  </a>
+                </Link>
+
+                <Link href="/my-consultations">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Mes consultations
+                  </a>
+                </Link>
+
+                <Link href="/my-account">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Mon Compte
+                  </a>
+                </Link>
+
+                <Link href="/my-medical-file">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Mon Dossier Medical
+                  </a>
+                </Link>
+
+                <Link href="/chat">
+                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Chat
+                  </a>
+                </Link>
+
               </div>
             </div>
           </nav>
