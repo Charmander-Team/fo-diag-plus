@@ -6,48 +6,57 @@ const AuthenticationContext = createContext();
 
 const AuthenticationWrapper = ({children}) => {
 
-  //Process deconnexion
+  const [isLogged, setIsLogged] = useState(false)
+  const [userInfo, setUserInfo] = useState({})
+
+  // Disconnect Feature
   const logoutClick = (event) => {
     event.preventDefault()
-    setLogin(false)
+    setIsLogged(false)
     localStorage.removeItem('tokenRefresh')
     localStorage.removeItem('tokenAccess')
   }
 
-  // Process connexion début
-  const [login, setLogin] = useState(false)
-  const connectedUser = async (event, opts) => {
+  // Connect Feature
+  const connectUser = async (event, credentials) => {
     event.preventDefault()
-    const token = await authentication.byPostToken(opts)
-    if (token) {
-      setLogin(true)
+    const token = await authentication.generateToken(credentials);
+    if (token && token.length !== 0 ) {
+      setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
+
+      const getUserInfo = await usersApi.getUser(token);
+      setUserInfo(getUserInfo);
 
       setConnection(false);
       setRegister(false);
     }
   }
-  // Process connexion fin
 
   // Register User Feature
   const registerUser = async (event, userInfos) => {
     event.preventDefault();
-    await usersApi.createUser(userInfos)
+    const creation = await usersApi.createUser(userInfos)
+
+    if (creation && creation.length !== 0) {
+      // To reset Authentication State
+      setConnection(false);
+      setRegister(false);
+    }
+
   }
 
-
-  //Process refresh
-
+  // Refresh Feature
   useEffect(() => {
     const token = localStorage.getItem("tokenRefresh")
     const refresh = async () => {
       const response = await authentication.refresh(token)
       if (response.code !== "token_not_valid") {
         localStorage.setItem("tokenAccess", response.access)
-        setLogin(true)
+        setIsLogged(true)
       } else {
-        setLogin(false)
+        setIsLogged(false)
       }
     }
 
@@ -70,7 +79,7 @@ const AuthenticationWrapper = ({children}) => {
     setRegister(true);
   }
 
-  const resetState = () => {
+  const resetAuthenticationState = () => {
     setConnection(false);
     setRegister(false);
   }
@@ -167,11 +176,12 @@ const AuthenticationWrapper = ({children}) => {
       registerClick,
       register,
       registerUser,
-      resetState,
+      resetAuthenticationState,
       handleChange,
       loadInputValues,
-      connectedUser,
-      login,
+      connectUser,
+      isLogged,
+      userInfo,
       logoutClick
     }}>
       {children}

@@ -1,12 +1,12 @@
 $toggle-border-radius: 3px;
 
-.auth{
+.auth {
   border: $toggle-border-radius solid rgb(148, 163, 184);
-  background-color: rgb(255, 255,255);
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
 }
 
-.btnAuth{
+.btnAuth {
   padding: 10px;
   position: relative;
   text-align: center;
@@ -17,39 +17,46 @@ $toggle-border-radius: 3px;
 
 input[type="radio"].toggle {
   display: none;
-  & + label{
-      cursor: pointer;
-      min-width: 60px;
-      color:#1a1a1a;
-      &:hover{
-          background: none;
-          color: #1a1a1a;
-      }
-      &:after{
-          border-radius: 10px;
-          background: rgb(203 213 225);
-          content: "";
-          height: 100%;
-          position: absolute;
-          top: 0;
-          transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
-          width: calc(100% - $toggle-border-radius * 2);
-          z-index: -1;
-      }
+
+  & + label {
+    cursor: pointer;
+    min-width: 60px;
+    color: #1a1a1a;
+
+    &:hover {
+      background: none;
+      color: #1a1a1a;
+    }
+
+    &:after {
+      border-radius: 10px;
+      background: rgb(203 213 225);
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+      width: calc(100% - $toggle-border-radius * 2);
+      z-index: -1;
+    }
   }
+
   &.toggle-left + label {
-      // border-right: 0;
-      &:after{
-          left: 100%
-      }
+    // border-right: 0;
+    &:after {
+      left: 100%
+    }
   }
-  &.toggle-right + label{
-      margin-left: -5px;
-      &:after{
-          // left: -100%;
-          left: calc(-100% + $toggle-border-radius * 2);
-      }
+
+  &.toggle-right + label {
+    margin-left: -5px;
+
+    &:after {
+      // left: -100%;
+      left: calc(-100% + $toggle-border-radius * 2);
+    }
   }
+
   &:checked + label {
     // background: #1a1a1a;
     cursor: default;
@@ -57,14 +64,14 @@ input[type="radio"].toggle {
     z-index: 2;
     // transition: background 600ms ease, color 600ms ease;
     // transition: color 200ms;
-    &:after{
+    &:after {
       left: 0;
     }
   }
 }
 
 .btnAuth.hover:hover {
-  background-color:rgb(148, 163, 184);
-  color:#ffffff;
-  cursor:pointer;
+  background-color: rgb(148, 163, 184);
+  color: #ffffff;
+  cursor: pointer;
 }

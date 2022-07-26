@@ -4,28 +4,28 @@ import {useContext} from "react";
 
 const Connection = () => {
 
-  const {resetState, connectedUser} = useContext(AuthenticationContext);
+  const {resetAuthenticationState, connectUser} = useContext(AuthenticationContext);
 
-  let opts = {
+  let credentials = {
     email: "",
     password: ""
   }
 
-  const handleChange = (e) => {
-    if ( e.target.id === "mail" ) {
-      opts.email = e.target.value
+  const loadCredentials = (event) => {
+    if ( event.target.id === "mail" ) {
+      credentials.email = event.target.value
     }
 
-    if ( e.target.id === "password" ) {
-      opts.password = e.target.value
+    if ( event.target.id === "password" ) {
+      credentials.password = event.target.value
     }
   }
 
   return (
     <>
-      <Button label="X Fermer"
+      <Button label="X - Fermer"
               classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
-              onClick={resetState}/>
+              onClick={resetAuthenticationState}/>
 
       <div className="w-full pl-24 ">
         <form className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -33,7 +33,7 @@ const Connection = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="mail">
               Adresse mail
             </label>
-            <input onChange={handleChange}
+            <input onChange={loadCredentials}
                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                    id="mail" type="email" placeholder="coualan.yoann@gmail.com"/>
           </div>
@@ -41,13 +41,13 @@ const Connection = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Mot de passe
             </label>
-            <input onChange={handleChange}
+            <input onChange={loadCredentials}
                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                    id="password" type="password"/>
           </div>
 
           <div className="flex items-center justify-between">
-            <Button onClick={ (event)=> { connectedUser(event,opts) } }
+            <Button onClick={ (event)=> { connectUser(event, credentials) } }
                     className="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
                     label="Se connecter"/>
           </div>
