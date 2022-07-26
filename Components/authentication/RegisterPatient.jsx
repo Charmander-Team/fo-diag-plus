@@ -3,7 +3,7 @@ import {useContext} from "react";
 
 const RegisterPatient = () => {
 
-  const {handleInputChange} = useContext(AuthenticationContext);
+  const {loadInputValues} = useContext(AuthenticationContext);
 
   return (
     <>
@@ -14,7 +14,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="weight">
               Poids
             </label>
-            <input onChange={handleInputChange}
+            <input onChange={loadInputValues}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="weight" type="number" placeholder="75"/>
           </div>
@@ -23,7 +23,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="height">
               Taille
             </label>
-            <input onChange={handleInputChange}
+            <input onChange={loadInputValues}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="height" type="number" placeholder="180"/>
           </div>
@@ -32,7 +32,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="height">
               Origine
             </label>
-            <select onChange={handleInputChange}
+            <select onChange={loadInputValues}
                     id="origin"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               name="origin">
@@ -49,7 +49,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="birthdate">
               Date de Naissance
             </label>
-            <input onChange={handleInputChange}
+            <input onChange={loadInputValues}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="birthdate" type="text" placeholder="2022-12-31"/>
           </div>
@@ -58,7 +58,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Tabac
             </label>
-            <div onChange={handleInputChange}>
+            <div onChange={loadInputValues}>
               <span className="text-gray-700 px-3">Oui :</span>
               <input id="tobacco" name="tobacco" value="true" type="radio"/>
               <span className="text-gray-700 px-3">Non :</span>
@@ -70,7 +70,7 @@ const RegisterPatient = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Alcool
             </label>
-            <div onChange={handleInputChange}>
+            <div onChange={loadInputValues}>
               <span className="text-gray-700 px-3">Oui :</span>
               <input id="alcohol" name="alcohol" value="true" type="radio"/>
               <span className="text-gray-700 px-3">Non :</span>

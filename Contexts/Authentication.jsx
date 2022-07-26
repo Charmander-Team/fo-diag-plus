@@ -1,5 +1,6 @@
 import authentication from "./../src/services/routes/authentication";
 import {createContext, useState, useEffect} from "react";
+import usersApi from "../src/services/routes/usersApi";
 
 const AuthenticationContext = createContext();
 
@@ -29,20 +30,10 @@ const AuthenticationWrapper = ({children}) => {
   }
   // Process connexion fin
 
-  // Register Feature
-  const registerUser = async (event, input) => {
+  // Register User Feature
+  const registerUser = async (event, userInfos) => {
     event.preventDefault();
-    console.log("input", input)
-    //const token = await authentication.byPostToken(input)
-    //console.log("token",token)
-    // if ( token ){
-    //     setLogin(true)
-    //     localStorage.setItem('tokenRefresh', token.refresh)
-    //     localStorage.setItem('tokenAccess', token.access)
-    //
-    //     setConnection(false);
-    //     setRegister(false);
-    // }
+    await usersApi.createUser(userInfos)
   }
 
 
@@ -52,7 +43,6 @@ const AuthenticationWrapper = ({children}) => {
     const token = localStorage.getItem("tokenRefresh")
     const refresh = async () => {
       const response = await authentication.refresh(token)
-      //console.log("response",response)
       if (response.code !== "token_not_valid") {
         localStorage.setItem("tokenAccess", response.access)
         setLogin(true)
@@ -94,78 +84,84 @@ const AuthenticationWrapper = ({children}) => {
     }
   }
 
-  let fieldTable = {
-    lastname: "",
-    firstname: "",
-    mail: "",
-    password: "",
-    phone: "",
-    address: "",
-    city: "",
-    zipcode: "",
-    weight: "",
-    gender: "",
-    origin: "",
-    height: "",
-    birthdate: "",
-    tobacco: "",
-    alcohol: "",
+  let formattedInputValues = {
+    email: null,
+    password: null,
+    first_name: null,
+    last_name: null,
+    address: null,
+    city: null,
+    zipcode: null,
+    telephone: null,
+    date_joined: null,
+    birthdate: null,
+    gender: null,
+    height: null,
+    weight: null,
+    origin: null,
+    smoking: false,
+    alcohol: false,
+    role: null,
   }
 
-  const handleInputChange = (event) => {
+  const loadInputValues = (event) => {
     event.preventDefault();
     if (event.target.id === "lastname") {
-      fieldTable.lastname = event.target.value
+      formattedInputValues.last_name = event.target.value
     }
     if (event.target.id === "firstname") {
-      fieldTable.firstname = event.target.value
+      formattedInputValues.first_name = event.target.value
     }
     if (event.target.id === "mail") {
-      fieldTable.mail = event.target.value
+      formattedInputValues.email = event.target.value
     }
     if (event.target.id === "password") {
-      fieldTable.password = event.target.value
+      formattedInputValues.password = event.target.value
     }
     if (event.target.id === "phone") {
-      fieldTable.phone = event.target.value
+      formattedInputValues.telephone = event.target.value
     }
     if (event.target.id === "address") {
-      fieldTable.address = event.target.value
+      formattedInputValues.address = event.target.value
     }
     if (event.target.id === "city") {
-      fieldTable.city = event.target.value
+      formattedInputValues.city = event.target.value
     }
     if (event.target.id === "zip") {
-      fieldTable.zip = event.target.value
+      formattedInputValues.zipcode = event.target.value
     }
     if (event.target.id === "weight") {
-      fieldTable.weight = event.target.value
+      formattedInputValues.weight = event.target.value
     }
     if (event.target.id === "height") {
-      fieldTable.weight = event.target.value
+      formattedInputValues.height = event.target.value
     }
     if (event.target.id === "birthdate") {
-      fieldTable.weight = event.target.value
+      formattedInputValues.birthdate = event.target.value
     }
     if (event.target.id === "alcohol") {
-      fieldTable.alcohol = event.target.value
+      event.target.value === "true" ? formattedInputValues.alcohol = true : null
     }
     if (event.target.id === "tobacco") {
-      fieldTable.tobacco = event.target.value
+      event.target.value === "true" ? formattedInputValues.smoking = true : null
     }
     if (event.target.id === "male") {
-      fieldTable.gender = event.target.value
+      formattedInputValues.gender = event.target.value
     } else {
-      fieldTable.gender = "F"
+      formattedInputValues.gender = "F"
     }
     if (event.target.id === "origin") {
-      fieldTable.origin = event.target.value
+      formattedInputValues.origin = event.target.value
     }
+
+    formattedInputValues.date_joined = "2022-07-26T11:22:23.514Z"
+
+    formattedInputValues.role = "patient"
   }
 
   return (
     <AuthenticationContext.Provider value={{
-      fieldTable,
+      formattedInputValues,
       connectionClick,
       connection,
       registerClick,
@@ -173,7 +169,7 @@ const AuthenticationWrapper = ({children}) => {
       registerUser,
       resetState,
       handleChange,
-      handleInputChange,
+      loadInputValues,
       connectedUser,
       login,
       logoutClick
