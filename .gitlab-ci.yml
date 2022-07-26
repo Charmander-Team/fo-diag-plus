@@ -57,14 +57,14 @@ fo-deploy-staging:
     stage: deploy
     image: ruby:latest
     # NO dependencies because Heroku make build/export himself
-    dependencies: []
+    dependencies: [ ]
     # Must Use for Heroku deploy
     script:
         - apt-get update -qy
         - apt-get install -y ruby-dev
         - gem install dpl
         - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
-        
+
 # 5th job PROD DEPLOY (on Digital Ocean VPS)
 fo-deploy-prod:
     only:

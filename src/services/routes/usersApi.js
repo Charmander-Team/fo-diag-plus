@@ -29,16 +29,16 @@ const usersApi = {
 
     const CONFIG = {
       headers: {
-        Authorization : `Bearer ${token.access}`
+        Authorization: `Bearer ${token.access}`
       }
     }
 
-    let response = await customAxios.get(`${ROUTE+USER_ID}`, CONFIG)
+    let response = await customAxios.get(`${ROUTE + USER_ID}`, CONFIG)
       .then((data) => {
         return data;
       })
       .catch(error => {
-        console.error(`Route ${ROUTE+USER_ID} does not exist !`, error);
+        console.error(`Route ${ROUTE + USER_ID} does not exist !`, error);
       });
 
     if (response) {
