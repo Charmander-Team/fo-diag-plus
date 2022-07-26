@@ -27,7 +27,13 @@ const usersApi = {
     const PAYLOAD = jwtDecode(token?.access);
     const USER_ID = PAYLOAD?.user_id;
 
-    let response = await customAxios.get(`${ROUTE+USER_ID}`)
+    const CONFIG = {
+      headers: {
+        Authorization : `Bearer ${token.access}`
+      }
+    }
+
+    let response = await customAxios.get(`${ROUTE+USER_ID}`, CONFIG)
       .then((data) => {
         return data;
       })

@@ -7,6 +7,7 @@ const AuthenticationContext = createContext();
 const AuthenticationWrapper = ({children}) => {
 
   const [isLogged, setIsLogged] = useState(false)
+  const [userInfo, setUserInfo] = useState({})
 
   // Disconnect Feature
   const logoutClick = (event) => {
@@ -25,14 +26,13 @@ const AuthenticationWrapper = ({children}) => {
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
 
-      const userInfo = await usersApi.getUser(token);
-      console.log(userInfo);
+      const getUserInfo = await usersApi.getUser(token);
+      setUserInfo(getUserInfo);
 
       setConnection(false);
       setRegister(false);
     }
   }
-
 
   // Register User Feature
   const registerUser = async (event, userInfos) => {
@@ -40,8 +40,7 @@ const AuthenticationWrapper = ({children}) => {
     await usersApi.createUser(userInfos)
   }
 
-
-  //Process refresh
+  // Refresh Feature
   useEffect(() => {
     const token = localStorage.getItem("tokenRefresh")
     const refresh = async () => {
@@ -175,6 +174,7 @@ const AuthenticationWrapper = ({children}) => {
       loadInputValues,
       connectedUser,
       isLogged,
+      userInfo,
       logoutClick
     }}>
       {children}
