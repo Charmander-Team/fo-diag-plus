@@ -4,7 +4,7 @@ import {useContext} from "react";
 
 const Connection = () => {
 
-  const {resetState, connectedUser} = useContext(AuthenticationContext);
+  const {resetAuthenticationState, connectedUser} = useContext(AuthenticationContext);
 
   let opts = {
     email: "",
@@ -25,7 +25,7 @@ const Connection = () => {
     <>
       <Button label="X Fermer"
               classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
-              onClick={resetState}/>
+              onClick={resetAuthenticationState}/>
 
       <div className="w-full pl-24 ">
         <form className="bg-slate-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">

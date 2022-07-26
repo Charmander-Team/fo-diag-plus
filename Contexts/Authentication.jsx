@@ -72,7 +72,7 @@ const AuthenticationWrapper = ({children}) => {
     setRegister(true);
   }
 
-  const resetState = () => {
+  const resetAuthenticationState = () => {
     setConnection(false);
     setRegister(false);
   }
@@ -169,7 +169,7 @@ const AuthenticationWrapper = ({children}) => {
       registerClick,
       register,
       registerUser,
-      resetState,
+      resetAuthenticationState,
       handleChange,
       loadInputValues,
       connectedUser,

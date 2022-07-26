@@ -7,7 +7,7 @@ import RegisterDoctor from "./RegisterDoctor";
 const Register = () => {
 
   /** To close Authentication Component **/
-  const {resetState, registerUser, loadInputValues, formattedInputValues} = useContext(AuthenticationContext);
+  const {resetAuthenticationState, registerUser, loadInputValues, formattedInputValues} = useContext(AuthenticationContext);
 
   /** To manage radio role input **/
   const [role, setRole] = useState(null);
@@ -20,7 +20,7 @@ const Register = () => {
 
       <Button label="X - Fermer"
               classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
-              onClick={resetState}/>
+              onClick={resetAuthenticationState}/>
 
       <form>
         <div className="w-full pl-24 ">
