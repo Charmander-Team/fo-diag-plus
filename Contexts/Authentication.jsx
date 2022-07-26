@@ -38,7 +38,13 @@ const AuthenticationWrapper = ({children}) => {
   const registerUser = async (event, userInfos) => {
     event.preventDefault();
     const creation = await usersApi.createUser(userInfos)
-    //console.log(creation)
+
+    if (creation && creation.length !== 0) {
+      // To reset Authentication State
+      setConnection(false);
+      setRegister(false);
+    }
+
   }
 
   // Refresh Feature
