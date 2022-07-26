@@ -1,11 +1,11 @@
-const News = ({classList}) => {
+const News = ({title, classList}) => {
 
-  const content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  const content = "La fièvre n’est pas une maladie en soi, mais une manifestation signalant une réaction de l’organisme, le plus souvent face à une infection. Chez un adulte, on parle en général de fièvre lorsque la température interne du corps dépasse 38°C. Elle s’annonce par une sensation de froid, des frissons plus ou moins intenses, voire des claquements de dents. La personne se sent faible. Plus tard, la transpiration devient abondante, le pouls et la respiration s’accélèrent, la soif augmente."
 
   return (
     <div className={`basis-1/5 ${classList} text-white p-4`}>
 
-      <h3 className="text-2xl">Titre</h3>
+      <h3 className="text-2xl">{title}</h3>
       <br/>
       <div className="text-sm">
         {content.substring(0, 130)}...

@@ -21,13 +21,14 @@ const Steps = () => {
         <div className="pl-8 pr-8">
           <div className="font-bold pb-2">Completez votre dossier médical</div>
           <div className="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus faucibus gravida
-            dolor vitae finibus. Phasellus pulvinar ut sapien lacinia mollis. Nulla
-            pellentesque quam et luctus dictum. Aenean quis dapibus leo, id pellentesque libero.
-            Quisque ultricies arcu in imperdiet cursus. Quisque lorem diam,
-            laoreet eget vestibulum non, porta ac magna. Praesent mauris nulla, viverra mattis
-            lobortis a, cursus sit amet neque. Etiam ligula urna, hendrerit sed ex
-            non, ornare posuere tortor.
+            Les personnes suivantes peuvent consulter le dossier :
+            <ul>
+              <li>Le patient lui-même,</li>
+              <li>Son tuteur, si le patient est majeur sous tutelle (une personne sous curatelle peut consulter
+                elle-même son dossier)
+              </li>
+              <li>Son médecin si le patient l'a choisi comme intermédiaire</li>
+            </ul>
           </div>
         </div>
 
