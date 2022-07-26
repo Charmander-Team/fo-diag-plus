@@ -18,9 +18,9 @@ const AuthenticationWrapper = ({children}) => {
   }
 
   // Connect Feature
-  const connectedUser = async (event, opts) => {
+  const connectUser = async (event, credentials) => {
     event.preventDefault()
-    const token = await authentication.byPostToken(opts)
+    const token = await authentication.byPostToken(credentials)
     if (token) {
       setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
@@ -172,7 +172,7 @@ const AuthenticationWrapper = ({children}) => {
       resetAuthenticationState,
       handleChange,
       loadInputValues,
-      connectedUser,
+      connectUser,
       isLogged,
       userInfo,
       logoutClick
