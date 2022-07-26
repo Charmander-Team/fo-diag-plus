@@ -1,25 +1,53 @@
 import customAxios from "./../customAxios";
+import jwtDecode from "jwt-decode";
 
-const route = "/api/users/";
+const ROUTE = "/api/users/";
 
 const usersApi = {
 
-    async createUser(user) {
+  async createUser(user) {
 
-        let response = await customAxios.post(`${route}`, user)
-          .then((data) => {
-              return data;
-          })
-          .catch(error => {
-              console.error(`Route ${route} does not exist !`, error);
-          });
+    let response = await customAxios.post(`${ROUTE}`, user)
+      .then((data) => {
+        return data;
+      })
+      .catch(error => {
+        console.error(`Route ${ROUTE} does not exist !`, error);
+      });
 
-        if (response) {
-            return response.data;
-        }
-        return [];
+    if (response) {
+      return response.data;
+    }
+    return [];
 
-    },
+  },
+
+  async getUser(token) {
+
+    const PAYLOAD = jwtDecode(token?.access);
+    const USER_ID = PAYLOAD?.user_id;
+
+    const CONFIG = {
+      headers: {
+        Authorization: `Bearer ${token.access}`
+      }
+    }
+
+    let response = await customAxios.get(`${ROUTE + USER_ID}`, CONFIG)
+      .then((data) => {
+        return data;
+      })
+      .catch(error => {
+        console.error(`Route ${ROUTE + USER_ID} does not exist !`, error);
+      });
+
+    if (response) {
+      return response.data;
+    }
+    return [];
+
+  },
+
 }
 
 export default usersApi;

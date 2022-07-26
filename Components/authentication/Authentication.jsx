@@ -3,14 +3,14 @@ import AuthenticationContext from "../../Contexts/Authentication";
 
 const Authentication = () => {
 
-  let {connectionClick, registerClick, login, logoutClick} = useContext(AuthenticationContext);
+  let {connectionClick, registerClick, isLogged, logoutClick} = useContext(AuthenticationContext);
 
   const [checked, setChecked] = useState(true)
 
   return (
     <>
       {
-        !login ?
+        !isLogged ?
           <div className="auth flex w-fit h-fit">
             <input id="toggle-on" className="toggle toggle-left" name="toggle" value="connexion" type="radio"
                    defaultChecked={checked} onChange={() => setChecked(!checked)}/>
