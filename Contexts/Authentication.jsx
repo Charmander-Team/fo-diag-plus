@@ -6,29 +6,33 @@ const AuthenticationContext = createContext();
 
 const AuthenticationWrapper = ({children}) => {
 
-  //Process deconnexion
+  const [isLogged, setIsLogged] = useState(false)
+
+  // Disconnect Feature
   const logoutClick = (event) => {
     event.preventDefault()
-    setLogin(false)
+    setIsLogged(false)
     localStorage.removeItem('tokenRefresh')
     localStorage.removeItem('tokenAccess')
   }
 
-  // Process connexion début
-  const [login, setLogin] = useState(false)
+  // Connect Feature
   const connectedUser = async (event, opts) => {
     event.preventDefault()
     const token = await authentication.byPostToken(opts)
     if (token) {
-      setLogin(true)
+      setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
+
+      const userInfo = await usersApi.getUser(token);
+      console.log(userInfo);
 
       setConnection(false);
       setRegister(false);
     }
   }
-  // Process connexion fin
+
 
   // Register User Feature
   const registerUser = async (event, userInfos) => {
@@ -38,16 +42,15 @@ const AuthenticationWrapper = ({children}) => {
 
 
   //Process refresh
-
   useEffect(() => {
     const token = localStorage.getItem("tokenRefresh")
     const refresh = async () => {
       const response = await authentication.refresh(token)
       if (response.code !== "token_not_valid") {
         localStorage.setItem("tokenAccess", response.access)
-        setLogin(true)
+        setIsLogged(true)
       } else {
-        setLogin(false)
+        setIsLogged(false)
       }
     }
 
@@ -171,7 +174,7 @@ const AuthenticationWrapper = ({children}) => {
       handleChange,
       loadInputValues,
       connectedUser,
-      login,
+      isLogged,
       logoutClick
     }}>
       {children}
