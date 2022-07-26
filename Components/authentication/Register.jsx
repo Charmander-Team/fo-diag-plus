@@ -6,13 +6,14 @@ import RegisterDoctor from "./RegisterDoctor";
 
 const Register = () => {
 
-  /** To close Authentication Component **/
+  // To recovery some tools from AuthenticationContext
   const {resetAuthenticationState, registerUser, loadInputValues, formattedInputValues} = useContext(AuthenticationContext);
 
-  /** To manage radio role input **/
-  const [role, setRole] = useState(null);
-  const handleClick = (r) => {
-    setRole(r.target.value);
+  // To manage radio role input
+  const [role, setRole] = useState("");
+
+  const toSetRole = (event) => {
+    setRole(event.target.value);
   }
 
   return (
@@ -115,14 +116,14 @@ const Register = () => {
 
         <section className="register mb-4">
           <div>
-            <input type="radio" id="control_01" name="status" onClick={handleClick} value="Patient"/>
+            <input type="radio" id="control_01" name="status" onClick={toSetRole} value="Patient"/>
             <label htmlFor="control_01">
               <h2 className="mt-3">Patient</h2>
               <p>Je suis un patient est je souhaite obtenir un diagnostique fiable en ligne</p>
             </label>
           </div>
           <div>
-            <input type="radio" id="control_02" name="status" onClick={handleClick} value="Doctor"/>
+            <input type="radio" id="control_02" name="status" onClick={toSetRole} value="Doctor"/>
             <label htmlFor="control_02">
               <h2 className="mt-3">Docteur</h2>
               <p>Je suis un praticien et je souhaite effectuer des diagnostiques en ligne puis consulter mes
