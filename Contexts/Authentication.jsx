@@ -1,8 +1,10 @@
 import authentication from "./../src/services/routes/authentication";
 import {createContext, useState, useEffect} from "react";
 import usersApi from "../src/services/routes/usersApi";
+import Router from "next/router";
 
 const AuthenticationContext = createContext();
+
 
 const AuthenticationWrapper = ({children}) => {
 
@@ -13,6 +15,7 @@ const AuthenticationWrapper = ({children}) => {
   // Disconnect Feature
   const logoutClick = (event) => {
     event.preventDefault()
+    Router.push("/");
     setIsLogged(false)
     localStorage.removeItem('tokenRefresh')
     localStorage.removeItem('tokenAccess')

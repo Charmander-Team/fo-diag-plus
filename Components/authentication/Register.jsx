@@ -138,7 +138,7 @@ const Register = () => {
         <div className="flex items-center justify-between">
           <Button label="S'inscrire"
                   onClick={ (event)=> { registerUser(event, formattedInputValues) } }
-                  classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
+                  classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
         </div>
 
       </form>
