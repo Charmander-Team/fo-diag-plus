@@ -115,13 +115,12 @@ const MyAccount = () => {
                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                  id="password" type="text"/>
         </div>
-
         <div className="w-full mt-7">
           <Button label="Mettre à jour"
                   onClick={(event) => {
                     updateUser(event, tokenState, userInfo)
                   }}
-                  classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
+                  classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
         </div>
       </div>
     </>
