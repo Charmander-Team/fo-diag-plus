@@ -26,7 +26,7 @@ const AuthenticationWrapper = ({children}) => {
     event.preventDefault()
     const token = await authentication.generateToken(credentials);
 
-    if (token && token.length !== 0 ) {
+    if (token && token.length !== 0) {
       setTokenState(token)
       setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
@@ -46,18 +46,27 @@ const AuthenticationWrapper = ({children}) => {
     const creation = await usersApi.createUser(userInfos)
 
     if (creation && creation.length !== 0) {
+      console.log("COMPTE CREE")
       // To reset Authentication State
       setConnection(false);
       setRegister(false);
+    } else {
+      console.log("ECHEC DE LA CREATION DU COMPTE")
     }
   }
 
   // Update User Feature
   const updateUser = async (event, token, newUserInfos) => {
     event.preventDefault();
-    const update = await usersApi.updateUser(token, newUserInfos)
-    if (update && update.length !== 0) {
-      console.log("UPDATE OK")
+    let update = null
+    // To block "MISE A JOUR" button if password is empty
+    if (newUserInfos.password !== "") {
+      update = await usersApi.updateUser(token, newUserInfos)
+      if (update && update.length !== 0) {
+        console.log("UPDATE OK")
+      } else {
+        console.log("ECHEC DE L'UPDATE")
+      }
     }
   }
 
