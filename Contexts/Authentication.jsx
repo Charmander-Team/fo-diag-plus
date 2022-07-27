@@ -55,7 +55,6 @@ const AuthenticationWrapper = ({children}) => {
   // Update User Feature
   const updateUser = async (event, token, newUserInfos) => {
     event.preventDefault();
-
     const update = await usersApi.updateUser(token, newUserInfos)
     if (update && update.length !== 0) {
       console.log("UPDATE OK")
@@ -191,9 +190,6 @@ const AuthenticationWrapper = ({children}) => {
     if (event.target.id === "firstname") {
       oldUserInfos.first_name = event.target.value
     }
-    if (event.target.id === "mail") {
-      oldUserInfos.email = event.target.value
-    }
     if (event.target.id === "password") {
       oldUserInfos.password = event.target.value
     }
@@ -214,23 +210,6 @@ const AuthenticationWrapper = ({children}) => {
     }
     if (event.target.id === "height") {
       oldUserInfos.height = event.target.value
-    }
-    if (event.target.id === "birthdate") {
-      oldUserInfos.birthdate = event.target.value
-    }
-    if (event.target.id === "alcohol") {
-      event.target.value === "true" ? oldUserInfos.alcohol = true : null
-    }
-    if (event.target.id === "tobacco") {
-      event.target.value === "true" ? oldUserInfos.smoking = true : null
-    }
-    if (event.target.id === "male") {
-      oldUserInfos.gender = event.target.value
-    } else {
-      oldUserInfos.gender = "F"
-    }
-    if (event.target.id === "origin") {
-      oldUserInfos.origin = event.target.value
     }
   }
 
