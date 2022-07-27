@@ -37,6 +37,8 @@ const AuthenticationWrapper = ({children}) => {
 
       setConnection(false);
       setRegister(false);
+    } else {
+      console.log("ECHEC DE LA CONNECTION")
     }
   }
 
