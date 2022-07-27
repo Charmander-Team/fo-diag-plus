@@ -104,22 +104,26 @@ const MyAccount = () => {
         </div>
       </div>
 
-      <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
-          Mot de Passe
-        </label>
-        <input onChange={(event) => {
-          updateInputValues(event, userInfo)
-        }}
-               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-               id="password" type="password"/>
-      </div>
+      <div className="mb-4 flex">
+        <div className="w-full mr-2">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            Mot de Passe
+          </label>
+          <input onChange={(event) => {
+            updateInputValues(event, userInfo)
+          }}
+                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 id="password" type="text"/>
+        </div>
 
-      <Button label="Mettre à jour"
-              onClick={(event) => {
-                updateUser(event, tokenState, userInfo)
-              }}
-              classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
+        <div className="w-full mt-7">
+          <Button label="Mettre à jour"
+                  onClick={(event) => {
+                    updateUser(event, tokenState, userInfo)
+                  }}
+                  classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
+        </div>
+      </div>
     </>
   )
 }
