@@ -32,6 +32,8 @@ const usersApi = {
         Authorization: `Bearer ${token.access}`
       }
     }
+
+    // To format User Info JSON without ID
     delete newUserInfos.id
 
     let response = await customAxios.put(`${ROUTE + USER_ID}/`, newUserInfos, CONFIG)
@@ -69,6 +71,8 @@ const usersApi = {
       });
 
     if (response) {
+      // To delete crypted password
+      response.data.password = ""
       return response.data;
     }
     return [];
