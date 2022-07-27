@@ -32,8 +32,9 @@ const usersApi = {
         Authorization: `Bearer ${token.access}`
       }
     }
+    delete newUserInfos.id
 
-    let response = await customAxios.put(`${ROUTE + USER_ID}`, newUserInfos, CONFIG)
+    let response = await customAxios.put(`${ROUTE + USER_ID}/`, newUserInfos, CONFIG)
       .then((data) => {
         return data;
       })

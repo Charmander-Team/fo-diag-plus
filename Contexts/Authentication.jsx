@@ -8,6 +8,7 @@ const AuthenticationWrapper = ({children}) => {
 
   const [isLogged, setIsLogged] = useState(false)
   const [userInfo, setUserInfo] = useState({})
+  const [tokenState, setTokenState] = useState(null)
 
   // Disconnect Feature
   const logoutClick = (event) => {
@@ -21,7 +22,9 @@ const AuthenticationWrapper = ({children}) => {
   const connectUser = async (event, credentials) => {
     event.preventDefault()
     const token = await authentication.generateToken(credentials);
+
     if (token && token.length !== 0 ) {
+      setTokenState(token)
       setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
@@ -47,23 +50,13 @@ const AuthenticationWrapper = ({children}) => {
   }
 
   // Update User Feature
-  const updateUser = async (event, newUserInfos) => {
+  const updateUser = async (event, token, newUserInfos) => {
     event.preventDefault();
 
-    const CREDENTIALS = {
-      email: newUserInfos?.email,
-      password: newUserInfos?.password,
+    const update = await usersApi.updateUser(token, newUserInfos)
+    if (update && update.length !== 0) {
+      console.log("UPDATE OK")
     }
-    //const TOKEN = await authentication.generateToken(CREDENTIALS);
-
-    //const update = await usersApi.updateUser(TOKEN, newUserInfos)
-
-    //console.log(update)
-    // if (update && update.length !== 0) {
-    //   // To reset Authentication State
-    //   setConnection(false);
-    //   setRegister(false);
-    // }
   }
 
   // Refresh Feature
@@ -254,6 +247,7 @@ const AuthenticationWrapper = ({children}) => {
       updateInputValues,
       connectUser,
       isLogged,
+      tokenState,
       userInfo,
       logoutClick
     }}>
