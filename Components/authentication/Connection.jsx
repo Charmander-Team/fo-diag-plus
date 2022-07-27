@@ -48,7 +48,7 @@ const Connection = () => {
 
           <div className="flex items-center justify-between">
             <Button onClick={ (event)=> { connectUser(event, credentials) } }
-                    className="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
+                    classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"
                     label="Se connecter"/>
           </div>
         </form>

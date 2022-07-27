@@ -1,8 +1,6 @@
 import AuthenticationContext from "../Contexts/Authentication";
 import {useContext} from 'react'
-import styles from "../styles/SideBar.module.scss";
 import Link from "next/link";
-import {useRouter} from "next/router";
 
 const Navigation = () => {
 
@@ -23,31 +21,31 @@ const Navigation = () => {
               <div className="text-sm lg:flex-grow">
 
                 <Link href="/my-appointments">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                  <a className="block m-2 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
                     Mes Rendez-vous
                   </a>
                 </Link>
 
                 <Link href="/my-consultations">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
-                    Mes consultations
+                  <a className="block m-2 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                    Mes Consultations
                   </a>
                 </Link>
 
                 <Link href="/my-account">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                  <a className="block m-2 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
                     Mon Compte
                   </a>
                 </Link>
 
                 <Link href="/my-medical-file">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                  <a className="block m-2 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
                     Mon Dossier Medical
                   </a>
                 </Link>
 
                 <Link href="/chat">
-                  <a className="block mt-4 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
+                  <a className="block m-2 lg:inline-block lg:mt-0 text-[#94a3b8] hover:text-[#6688b8]">
                     Chat
                   </a>
                 </Link>
