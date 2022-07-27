@@ -44,7 +44,18 @@ const AuthenticationWrapper = ({children}) => {
       setConnection(false);
       setRegister(false);
     }
+  }
 
+  // Update User Feature
+  const updateUser = async (event, newUserInfos) => {
+    event.preventDefault();
+    const update = await usersApi.updateUser(newUserInfos)
+    console.log(update)
+    // if (update && update.length !== 0) {
+    //   // To reset Authentication State
+    //   setConnection(false);
+    //   setRegister(false);
+    // }
   }
 
   // Refresh Feature
@@ -168,6 +179,58 @@ const AuthenticationWrapper = ({children}) => {
     formattedInputValues.role = "patient"
   }
 
+  const updateInputValues = (event, oldUserInfos) => {
+    event.preventDefault();
+    if (event.target.id === "lastname") {
+      oldUserInfos.last_name = event.target.value
+    }
+    if (event.target.id === "firstname") {
+      oldUserInfos.first_name = event.target.value
+    }
+    if (event.target.id === "mail") {
+      oldUserInfos.email = event.target.value
+    }
+    if (event.target.id === "password") {
+      oldUserInfos.password = event.target.value
+    }
+    if (event.target.id === "phone") {
+      oldUserInfos.telephone = event.target.value
+    }
+    if (event.target.id === "address") {
+      oldUserInfos.address = event.target.value
+    }
+    if (event.target.id === "city") {
+      oldUserInfos.city = event.target.value
+    }
+    if (event.target.id === "zip") {
+      oldUserInfos.zipcode = event.target.value
+    }
+    if (event.target.id === "weight") {
+      oldUserInfos.weight = event.target.value
+    }
+    if (event.target.id === "height") {
+      oldUserInfos.height = event.target.value
+    }
+    if (event.target.id === "birthdate") {
+      oldUserInfos.birthdate = event.target.value
+    }
+    if (event.target.id === "alcohol") {
+      event.target.value === "true" ? oldUserInfos.alcohol = true : null
+    }
+    if (event.target.id === "tobacco") {
+      event.target.value === "true" ? oldUserInfos.smoking = true : null
+    }
+    if (event.target.id === "male") {
+      oldUserInfos.gender = event.target.value
+    } else {
+      oldUserInfos.gender = "F"
+    }
+    if (event.target.id === "origin") {
+      oldUserInfos.origin = event.target.value
+    }
+  }
+
+
   return (
     <AuthenticationContext.Provider value={{
       formattedInputValues,
@@ -176,9 +239,11 @@ const AuthenticationWrapper = ({children}) => {
       registerClick,
       register,
       registerUser,
+      updateUser,
       resetAuthenticationState,
       handleChange,
       loadInputValues,
+      updateInputValues,
       connectUser,
       isLogged,
       userInfo,

@@ -1,22 +1,36 @@
 import AuthenticationContext from "../../Contexts/Authentication";
 import {useContext} from "react";
+import Button from "../../Components/Button";
 
 const MyAccount = () => {
 
-  let {userInfo} = useContext(AuthenticationContext);
+  let {userInfo, updateUser, updateInputValues} = useContext(AuthenticationContext);
 
   return (
     <>
       <h3>Mon compte</h3>
 
-      <div>{userInfo.gender}</div>
-      <div>{userInfo.last_name}</div>
-      <div>{userInfo.first_name}</div>
-      <div>{userInfo.birthdate}</div>
+      Nom de famille : <input type="text" id="lastname" onChange={(event) => {
+      updateInputValues(event, userInfo)
+    }} defaultValue={userInfo.last_name}/>
+
+      Prenom : <input type="text" id="firstname" onChange={(event) => {
+      updateInputValues(event, userInfo)
+    }} defaultValue={userInfo.first_name}/>
+
+      <input type="text" id="birthdate" onChange={(event) => {
+        updateInputValues(event, userInfo)
+      }} defaultValue={userInfo.birthdate}/>
+
       <div>{userInfo.origin}</div>
 
-      <div>{userInfo.height} cm</div>
-      <div>{userInfo.weight} kg</div>
+      <input type="text" id="height" onChange={(event) => {
+        updateInputValues(event, userInfo)
+      }} defaultValue={userInfo.height}/> cm
+
+      <input type="text" id="weight" onChange={(event) => {
+        updateInputValues(event, userInfo)
+      }} defaultValue={userInfo.weight}/> kg
 
       <div>{userInfo.email}</div>
       <div>{userInfo.address}</div>
@@ -25,6 +39,11 @@ const MyAccount = () => {
 
       <div>{userInfo.smoking}</div>
       <div>{userInfo.alcohol}</div>
+
+      <Button label="Mettre à jour"
+              onClick={(event) => {
+                updateUser(event, userInfo)
+              }}/>
     </>
   )
 }
