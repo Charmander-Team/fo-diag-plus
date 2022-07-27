@@ -49,8 +49,16 @@ const AuthenticationWrapper = ({children}) => {
   // Update User Feature
   const updateUser = async (event, newUserInfos) => {
     event.preventDefault();
-    const update = await usersApi.updateUser(newUserInfos)
-    console.log(update)
+
+    const CREDENTIALS = {
+      email: newUserInfos?.email,
+      password: newUserInfos?.password,
+    }
+    //const TOKEN = await authentication.generateToken(CREDENTIALS);
+
+    //const update = await usersApi.updateUser(TOKEN, newUserInfos)
+
+    //console.log(update)
     // if (update && update.length !== 0) {
     //   // To reset Authentication State
     //   setConnection(false);

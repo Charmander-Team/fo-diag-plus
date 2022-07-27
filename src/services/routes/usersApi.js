@@ -22,7 +22,7 @@ const usersApi = {
 
   },
 
-  async updateUser(token) {
+  async updateUser(token, newUserInfos) {
 
     const PAYLOAD = jwtDecode(token?.access);
     const USER_ID = PAYLOAD?.user_id;
@@ -33,7 +33,7 @@ const usersApi = {
       }
     }
 
-    let response = await customAxios.put(`${ROUTE + USER_ID}`, CONFIG)
+    let response = await customAxios.put(`${ROUTE + USER_ID}`, newUserInfos, CONFIG)
       .then((data) => {
         return data;
       })

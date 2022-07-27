@@ -10,40 +10,105 @@ const MyAccount = () => {
     <>
       <h3>Mon compte</h3>
 
-      Nom de famille : <input type="text" id="lastname" onChange={(event) => {
-      updateInputValues(event, userInfo)
-    }} defaultValue={userInfo.last_name}/>
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="lastname">
+          Nom
+        </label>
+        <input onChange={(event) => {
+          updateInputValues(event, userInfo)
+        }} defaultValue={userInfo.last_name}
+               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="lastname" type="text"/>
+      </div>
 
-      Prenom : <input type="text" id="firstname" onChange={(event) => {
-      updateInputValues(event, userInfo)
-    }} defaultValue={userInfo.first_name}/>
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="firstname">
+          Prénom
+        </label>
+        <input onChange={(event) => {
+          updateInputValues(event, userInfo)
+        }}
+               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+               id="firstname" type="text" defaultValue={userInfo.first_name}/>
+      </div>
 
-      <input type="text" id="birthdate" onChange={(event) => {
-        updateInputValues(event, userInfo)
-      }} defaultValue={userInfo.birthdate}/>
+      <div className="mb-4 flex">
+        <div className="w-full mr-2">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="weight">
+            Poids
+          </label>
+          <input onChange={(event) => {
+            updateInputValues(event, userInfo)
+          }}
+                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 id="weight" type="number" defaultValue={userInfo.weight}/>
+        </div>
 
-      <div>{userInfo.origin}</div>
+        <div className="w-full">
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="height">
+              Taille
+            </label>
+            <input onChange={(event) => {
+              updateInputValues(event, userInfo)
+            }}
+                   className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="height" type="number" defaultValue={userInfo.height}/>
+          </div>
+        </div>
+      </div>
 
-      <input type="text" id="height" onChange={(event) => {
-        updateInputValues(event, userInfo)
-      }} defaultValue={userInfo.height}/> cm
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+          Téléphone
+        </label>
+        <input onChange={(event) => {
+          updateInputValues(event, userInfo)
+        }}
+               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="phone" type="phone" defaultValue={userInfo.telephone}/>
+      </div>
 
-      <input type="text" id="weight" onChange={(event) => {
-        updateInputValues(event, userInfo)
-      }} defaultValue={userInfo.weight}/> kg
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+          Adresse postale
+        </label>
+        <input onChange={(event) => {
+          updateInputValues(event, userInfo)
+        }}
+               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+               id="address" type="text" defaultValue={userInfo.address}/>
+      </div>
 
-      <div>{userInfo.email}</div>
-      <div>{userInfo.address}</div>
-      <div>{userInfo.zipcode}</div>
-      <div>{userInfo.telephone}</div>
+      <div className="mb-4 flex">
+        <div className="w-full mr-2">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="city">
+            Ville
+          </label>
+          <input onChange={(event) => {
+            updateInputValues(event, userInfo)
+          }}
+                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 id="city" type="text" defaultValue={userInfo.city}/>
+        </div>
 
-      <div>{userInfo.smoking}</div>
-      <div>{userInfo.alcohol}</div>
+        <div className="w-full">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="zip">
+            Code postal
+          </label>
+          <input onChange={(event) => {
+            updateInputValues(event, userInfo)
+          }}
+                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 id="zip" type="number" defaultValue={userInfo.zipcode}/>
+        </div>
+      </div>
 
       <Button label="Mettre à jour"
               onClick={(event) => {
                 updateUser(event, userInfo)
-              }}/>
+              }}
+              classList="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
     </>
   )
 }
