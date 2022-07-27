@@ -8,6 +8,7 @@ const AuthenticationWrapper = ({children}) => {
 
   const [isLogged, setIsLogged] = useState(false)
   const [userInfo, setUserInfo] = useState({})
+  const [tokenState, setTokenState] = useState(null)
 
   // Disconnect Feature
   const logoutClick = (event) => {
@@ -21,7 +22,9 @@ const AuthenticationWrapper = ({children}) => {
   const connectUser = async (event, credentials) => {
     event.preventDefault()
     const token = await authentication.generateToken(credentials);
+
     if (token && token.length !== 0 ) {
+      setTokenState(token)
       setIsLogged(true)
       localStorage.setItem('tokenRefresh', token.refresh)
       localStorage.setItem('tokenAccess', token.access)
@@ -44,7 +47,16 @@ const AuthenticationWrapper = ({children}) => {
       setConnection(false);
       setRegister(false);
     }
+  }
 
+  // Update User Feature
+  const updateUser = async (event, token, newUserInfos) => {
+    event.preventDefault();
+
+    const update = await usersApi.updateUser(token, newUserInfos)
+    if (update && update.length !== 0) {
+      console.log("UPDATE OK")
+    }
   }
 
   // Refresh Feature
@@ -168,6 +180,58 @@ const AuthenticationWrapper = ({children}) => {
     formattedInputValues.role = "patient"
   }
 
+  const updateInputValues = (event, oldUserInfos) => {
+    event.preventDefault();
+    if (event.target.id === "lastname") {
+      oldUserInfos.last_name = event.target.value
+    }
+    if (event.target.id === "firstname") {
+      oldUserInfos.first_name = event.target.value
+    }
+    if (event.target.id === "mail") {
+      oldUserInfos.email = event.target.value
+    }
+    if (event.target.id === "password") {
+      oldUserInfos.password = event.target.value
+    }
+    if (event.target.id === "phone") {
+      oldUserInfos.telephone = event.target.value
+    }
+    if (event.target.id === "address") {
+      oldUserInfos.address = event.target.value
+    }
+    if (event.target.id === "city") {
+      oldUserInfos.city = event.target.value
+    }
+    if (event.target.id === "zip") {
+      oldUserInfos.zipcode = event.target.value
+    }
+    if (event.target.id === "weight") {
+      oldUserInfos.weight = event.target.value
+    }
+    if (event.target.id === "height") {
+      oldUserInfos.height = event.target.value
+    }
+    if (event.target.id === "birthdate") {
+      oldUserInfos.birthdate = event.target.value
+    }
+    if (event.target.id === "alcohol") {
+      event.target.value === "true" ? oldUserInfos.alcohol = true : null
+    }
+    if (event.target.id === "tobacco") {
+      event.target.value === "true" ? oldUserInfos.smoking = true : null
+    }
+    if (event.target.id === "male") {
+      oldUserInfos.gender = event.target.value
+    } else {
+      oldUserInfos.gender = "F"
+    }
+    if (event.target.id === "origin") {
+      oldUserInfos.origin = event.target.value
+    }
+  }
+
+
   return (
     <AuthenticationContext.Provider value={{
       formattedInputValues,
@@ -176,11 +240,14 @@ const AuthenticationWrapper = ({children}) => {
       registerClick,
       register,
       registerUser,
+      updateUser,
       resetAuthenticationState,
       handleChange,
       loadInputValues,
+      updateInputValues,
       connectUser,
       isLogged,
+      tokenState,
       userInfo,
       logoutClick
     }}>
