@@ -113,7 +113,7 @@ const MyAccount = () => {
             updateInputValues(event, userInfo)
           }}
                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                 id="password" type="text"/>
+                 id="password" type="password"/>
         </div>
         <div className="w-full mt-7">
           <Button label="Mettre à jour"
