@@ -7,9 +7,7 @@ import AuthenticationContext from "../Contexts/Authentication";
 const SideBar = () => {
 
   const ROUTER = useRouter();
-  let {userInfo, isLogged} = useContext(AuthenticationContext);
-  console.log(userInfo)
-  console.log(isLogged)
+  let {userInfo} = useContext(AuthenticationContext);
 
   return (
     <div className={styles.navigation}>
