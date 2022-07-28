@@ -37,6 +37,7 @@ const AuthenticationWrapper = ({children}) => {
 
       setConnection(false);
       setRegister(false);
+      console.log("CONNECTION OK")
     } else {
       console.log("ECHEC DE LA CONNECTION")
     }
@@ -69,6 +70,23 @@ const AuthenticationWrapper = ({children}) => {
       } else {
         console.log("ECHEC DE L'UPDATE")
       }
+    }
+  }
+
+  // Update User Feature
+  const deleteUser = async (event, token) => {
+    event.preventDefault();
+    let deletion = "todelete"
+    deletion = await usersApi.deleteUser(token)
+    if (deletion !== "todelete") {
+      // To redirect on homepage
+      Router.push("/");
+
+      // To disconnect
+      setIsLogged(false)
+      console.log("SUPPRESSION OK")
+    } else {
+      console.log("ERROR")
     }
   }
 
@@ -234,6 +252,7 @@ const AuthenticationWrapper = ({children}) => {
       register,
       registerUser,
       updateUser,
+      deleteUser,
       resetAuthenticationState,
       handleChange,
       loadInputValues,
