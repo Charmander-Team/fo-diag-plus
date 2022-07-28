@@ -1,8 +1,0 @@
-/**
- * You must have to:
- *  - copy this files and rename it "config.js"
- *  - edit this one with your Stripe Secret Key */
-
-const STRIPE_SECRET_KEY = "my_stripe_secret_key"
-
-module.exports.STRIPE_SECRET_KEY = STRIPE_SECRET_KEY;
