@@ -4,7 +4,7 @@ const stripe = require('stripe')('sk_test_51JPSpCKoSMACykFS7It7GZBBbuNZlq9OiJowQ
 async function CreateStripeSession(req, res) {
   const { item } = req.body;
 
-  const redirectURL = 'https://api.diag-plus.tk/';
+  const redirectURL = 'https://diag-plus.tk/';
 
   const transformedItem = {
     price_data: {
