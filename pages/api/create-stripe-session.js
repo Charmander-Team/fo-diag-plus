@@ -1,5 +1,5 @@
 //const config = require("../../config.js")
-const stripe = require('stripe')(ENV['STRIPE_SECRET_KEY']);
+const stripe = require('stripe')('sk_test_51JPSpCKoSMACykFS7It7GZBBbuNZlq9OiJowQFneajxG7gxM9gy1otqUL4RIEESE2dMOybdB3EpCyNwX4mGmHOqB00qIAfqpfC');
 
 async function CreateStripeSession(req, res) {
   const { item } = req.body;
