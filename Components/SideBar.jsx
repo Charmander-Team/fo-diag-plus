@@ -1,10 +1,15 @@
 import Link from "next/link";
 import {useRouter} from "next/router";
 import styles from "../styles/SideBar.module.scss";
+import {useContext} from "react";
+import AuthenticationContext from "../Contexts/Authentication";
 
 const SideBar = () => {
 
   const ROUTER = useRouter();
+  let {userInfo, isLogged} = useContext(AuthenticationContext);
+  console.log(userInfo)
+  console.log(isLogged)
 
   return (
     <div className={styles.navigation}>
@@ -46,6 +51,13 @@ const SideBar = () => {
             <a>A PROPOS</a>
           </Link>
         </li>
+        {(userInfo.is_staff === true)  ?
+          <li className="p-2">
+              <a href="https://bo.diag-plus.tk">ADMIN</a>
+          </li>
+          :
+          ""
+        }
       </ul>
     </div>
   );
