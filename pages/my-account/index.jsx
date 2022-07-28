@@ -4,7 +4,7 @@ import Button from "../../Components/Button";
 
 const MyAccount = () => {
 
-  let {userInfo, updateUser, updateInputValues, tokenState} = useContext(AuthenticationContext);
+  let {userInfo, updateUser, updateInputValues, deleteUser, tokenState} = useContext(AuthenticationContext);
 
   return (
     <>
@@ -121,6 +121,13 @@ const MyAccount = () => {
                     updateUser(event, tokenState, userInfo)
                   }}
                   classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
+        </div>
+        <div className="w-full mt-7">
+          <Button label="Supprimer mon compte"
+                  onClick={(event) => {
+                    deleteUser(event, tokenState, userInfo)
+                  }}
+                  classList="border-2 border-slate-400 bg-white hover:bg-red-400 hover:text-white"/>
         </div>
       </div>
     </>
