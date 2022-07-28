@@ -154,6 +154,7 @@ const AuthenticationWrapper = ({children}) => {
     smoking: false,
     alcohol: false,
     role: null,
+    is_staff: false,
   }
 
   const loadInputValues = (event) => {
@@ -207,7 +208,7 @@ const AuthenticationWrapper = ({children}) => {
     }
 
     formattedInputValues.date_joined = "2022-07-26T11:22:23.514Z"
-
+    formattedInputValues.is_staff = false
     formattedInputValues.role = "patient"
   }
 
