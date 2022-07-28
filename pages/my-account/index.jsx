@@ -1,10 +1,13 @@
 import AuthenticationContext from "../../Contexts/Authentication";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import Button from "../../Components/Button";
 
 const MyAccount = () => {
 
   let {userInfo, updateUser, updateInputValues, deleteUser, tokenState} = useContext(AuthenticationContext);
+
+  const [passwordInputValue, setPasswordInputValue] = useState('');
+
 
   return (
     <>
@@ -113,14 +116,15 @@ const MyAccount = () => {
             updateInputValues(event, userInfo)
           }}
                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                 id="password" type="text"/>
+                 id="password" type="password" defaultValue={passwordInputValue} onInput={event => setPasswordInputValue(event.target.value)}/>
         </div>
         <div className="w-full mt-7">
           <Button label="Mettre à jour"
                   onClick={(event) => {
                     updateUser(event, tokenState, userInfo)
                   }}
-                  classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white"/>
+                  disabled={passwordInputValue === ""}
+                  classList="border-2 border-slate-400 bg-white hover:bg-slate-400 hover:text-white disabled:cursor-not-allowed"/>
         </div>
         <div className="w-full mt-7">
           <Button label="Supprimer mon compte"
