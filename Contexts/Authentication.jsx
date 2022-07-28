@@ -70,6 +70,8 @@ const AuthenticationWrapper = ({children}) => {
       } else {
         console.log("ECHEC DE L'UPDATE")
       }
+    } else {
+      console.log("VEUILLEZ ENTRER VOTRE MOT DE PASSE")
     }
   }
 
