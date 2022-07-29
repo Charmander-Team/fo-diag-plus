@@ -4,7 +4,7 @@ const stripe = require('stripe')('sk_test_51JPSpCKoSMACykFS7It7GZBBbuNZlq9OiJowQ
 async function CreateStripeSession(req, res) {
   const { item } = req.body;
 
-  const redirectURL = 'https://diag-plus.tk/';
+  const redirectURL = 'https://diag-plus.herokuapp.com/';
 
   const transformedItem = {
     price_data: {
